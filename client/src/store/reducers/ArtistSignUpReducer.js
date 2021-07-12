@@ -8,7 +8,8 @@ const {
   SET_ARTIST_JAPANESE,
   SET_ARTIST_PORTRAIT,
   SET_ARTIST_GEOMETRIC,
-  SET_ARTIST_OTHER
+  SET_ARTIST_OTHER,
+  SET_ARTIST_DEFAULT
 } = require('../types')
 
 const iState = {
@@ -46,6 +47,19 @@ const ArtistSignUpReducer = (state = iState, action) => {
       return { ...state, geometric: action.payload }
     case SET_ARTIST_OTHER:
       return { ...state, other: action.payload }
+    case SET_ARTIST_DEFAULT:
+      return {
+        tattooShop: '',
+        tattooShopId: '',
+        americanTraditional: false,
+        neoTraditional: false,
+        tribal: false,
+        photoRealism: false,
+        japanese: false,
+        portrait: false,
+        geometric: false,
+        other: false
+      }
   }
 }
 
