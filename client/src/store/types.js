@@ -22,3 +22,10 @@ export const SET_POSTS = 'SET_POSTS'
 //Shops
 export const SET_SHOP_ARTISTS = 'SET_SHOP_ARTIST'
 export const SET_ARTISTS = 'SET_ARTISTS'
+
+//User
+export const SET_USER_EMAIL = 'SET_USER_EMAIL'
+export const SET_USER_PASSWORD = 'SET_USER_PASSWORD'
+export const SET_USER_NAME = 'SET_USER_NAME'
+export const SET_USER_IMAGE = 'SET_USER_IMAGE'
+export const SET_SELECTED_ARTIST = 'SET_SELECTED_ARTIST'
