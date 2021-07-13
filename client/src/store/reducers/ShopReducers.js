@@ -1,4 +1,4 @@
-const {} = require('../types')
+const { SET_SHOP_ARTISTS, SET_SHOPS } = require('../types')
 
 const iState = {
   artists: [],

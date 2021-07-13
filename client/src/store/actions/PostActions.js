@@ -18,17 +18,21 @@ export const SetPostImage = (link) => ({
   type: SET_POST_IMAGE,
   payload: link
 })
+
 export const SetPostPostedBy = (text) => ({
   type: SET_POST_POSTED_BY,
   payload: text
 })
+
 export const SetPostArtistID = (ID) => ({
   type: SET_POST_ARTIST_ID,
   payload: ID
 })
+
 export const SetPostDefault = () => ({
   type: SET_POST_DEFAULT
 })
+
 export const SetPosts = async () => {
   return async (dispatch) => {
     try {
