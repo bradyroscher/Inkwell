@@ -1,12 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-// import MovieReducer from './reducers/MovieReducer'
-//import ProductReducer from './reducers/ProductReducer'
+import ArtistSignUpReducer from './reducers/ArtistSignUpReducer'
+import PostReducer from './reducers/PostReducer'
+import ShopReducer from './reducers/ShopReducers'
+import UserReducer from './reducers/UserReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 const store = createStore(
   combineReducers({
-    // movieState: MovieReducer
-    //productState: ProductReducer
+    postState: PostReducer,
+    shopState: ShopReducer,
+    userState: UserReducer,
+    artistSignUpState: ArtistSignUpReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
   //turn off devtools for prd
