@@ -8,6 +8,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Review.belongsTo(models.User, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
+      // Review.belongsTo(models.Artist, {
+      //   foreignKey: 'artist_id',
+      //   onDelete: 'CASCADE',
+      //   onUpdate: 'CASCADE'
+      // })
       // define association here
     }
   }
@@ -15,14 +25,33 @@ module.exports = (sequelize, DataTypes) => {
     {
       rating: {
         type: DataTypes.ENUM,
-        values: [1, 2, 3, 4, 5]
+        values: ['1', '2', '3', '4', '5']
       },
       text: DataTypes.STRING,
-      postedBy: DataTypes.STRING
+      postedBy: DataTypes.STRING,
+      user_id: {
+        references: {
+          model: 'users',
+          key: 'id'
+        },
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE'
+      }
+      // artist_id: {
+      //   references: {
+      //     model: 'artists',
+      //     key: 'id'
+      //   },
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      //   onDelete: 'CASCADE'
+      // }
     },
     {
       sequelize,
-      modelName: 'Review'
+      modelName: 'Review',
+      tableName: 'reviews'
     }
   )
   return Review
