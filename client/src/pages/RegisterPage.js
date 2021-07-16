@@ -62,12 +62,6 @@ const RegisterPage = (props) => {
             props.handleName(e.target.value)
           }}
         />
-        <input
-          value={props.authState.image}
-          onChange={(e) => {
-            props.handleImage(e.target.value)
-          }}
-        />
         <button>SUBMIT</button>
       </form>
     </div>

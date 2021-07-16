@@ -27,15 +27,15 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE'
       },
-      // artist_id: {
-      //   references: {
-      //     model: 'artists',
-      //     key: 'id'
-      //   },
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   onDelete: 'CASCADE'
-      // },
+      artist_id: {
+        references: {
+          model: 'artists',
+          key: 'id'
+        },
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

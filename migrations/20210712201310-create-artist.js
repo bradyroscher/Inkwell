@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      shopName: {
+      image: {
         type: Sequelize.STRING
       },
       bio: {
@@ -42,13 +42,21 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
-      other: {
+      waterColor: {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
+      biomechanical: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      other: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
       user_id: {
         references: {
-          model: 'artists',
+          model: 'users',
           key: 'id'
         },
         type: Sequelize.INTEGER,

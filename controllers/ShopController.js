@@ -1,4 +1,5 @@
-const { Shop, Artist } = require('../models')
+const { Shop, Artist, Review, User } = require('../models')
+const { Op } = require('sequelize')
 
 const AddShop = async (req, res) => {
   try {
@@ -11,7 +12,9 @@ const AddShop = async (req, res) => {
 
 const GetShops = async (req, res) => {
   try {
-    const shops = await Shop.findAll({ include: [Artist] })
+    const shops = await Shop.findAll({
+      include: [{ model: Artist, include: [User] }]
+    })
     res.send(shops)
   } catch (error) {
     throw error
@@ -33,20 +36,39 @@ const DeleteShop = async (req, res) => {
 
 const GetShopWithArtists = async (req, res) => {
   try {
-    const shop = await Shop.findByPk(req.params.id)
-    const artists = await Artist.findAll({
-      where: { shop_id: req.params.id },
-      returning: true
+    const shop = await Shop.findOne({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: Artist,
+          include: [User]
+        }
+      ]
     })
-    res.send({ shop, artists: artists })
+    res.send(shop)
   } catch (error) {
     throw error
   }
+}
+
+const QueryAllShops = async (req, res) => {
+  let query = req.params.query
+  let compstring = `%${query}%`
+  const results = await Shop.findAll({
+    where: {
+      [Op.or]: [
+        { name: { [Op.iLike]: compstring } },
+        { address: { [Op.iLike]: compstring } }
+      ]
+    }
+  })
+  res.send(results)
 }
 
 module.exports = {
   AddShop,
   GetShops,
   GetShopWithArtists,
-  DeleteShop
+  DeleteShop,
+  QueryAllShops
 }

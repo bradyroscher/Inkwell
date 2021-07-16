@@ -1,13 +1,4 @@
-const { User, Artist } = require('../models')
-
-const AddUser = async (req, res) => {
-  try {
-    const user = await User.create(req.body)
-    res.send(user)
-  } catch (error) {
-    throw error
-  }
-}
+const { User, Artist, Review, Post } = require('../models')
 
 const AddArtist = async (req, res) => {
   try {
@@ -36,25 +27,28 @@ const GetArtists = async (req, res) => {
   }
 }
 
-const GetUserWithArtist = async (req, res) => {
+const GetUserWithArtistWithReviews = async (req, res) => {
   try {
     let userID = parseInt(req.params.id)
     console.log(userID)
-    let user = await User.findByPk(userID)
-    let artist = await Artist.findAll({
-      where: { user_id: userID },
-      returning: true
+    let user = await User.findOne({
+      where: { id: userID },
+      include: [
+        {
+          model: Artist,
+          include: [Review, Post]
+        }
+      ]
     })
-    res.send({ ...user, artist: artist })
+    res.send({ user })
   } catch (error) {
     throw error
   }
 }
 
 module.exports = {
-  AddUser,
   GetUsers,
   AddArtist,
-  GetUserWithArtist,
+  GetUserWithArtistWithReviews,
   GetArtists
 }

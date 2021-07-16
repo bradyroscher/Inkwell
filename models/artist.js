@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
-      // Artist.hasMany(models.Review, {
-      //   foreignKey: 'artist_id',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
+      Artist.hasMany(models.Review, {
+        foreignKey: 'artist_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
       Artist.belongsTo(models.User, {
         foreignKey: 'user_id',
         onDelete: 'CASCADE',
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Artist.init(
     {
-      shopName: DataTypes.STRING,
+      image: DataTypes.STRING,
       bio: DataTypes.STRING,
       americanTraditional: DataTypes.BOOLEAN,
       neoTraditional: DataTypes.BOOLEAN,
@@ -42,7 +42,9 @@ module.exports = (sequelize, DataTypes) => {
       japanese: DataTypes.BOOLEAN,
       portrait: DataTypes.BOOLEAN,
       geometric: DataTypes.BOOLEAN,
-      other: DataTypes.BOOLEAN,
+      waterColor: DataTypes.BOOLEAN,
+      biomechanical: DataTypes.BOOLEAN,
+      other: DataTypes.STRING,
       user_id: {
         references: {
           model: 'users',

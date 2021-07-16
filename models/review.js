@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
-      // Review.belongsTo(models.Artist, {
-      //   foreignKey: 'artist_id',
-      //   onDelete: 'CASCADE',
-      //   onUpdate: 'CASCADE'
-      // })
+      Review.belongsTo(models.Artist, {
+        foreignKey: 'artist_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
       // define association here
     }
   }
@@ -37,16 +37,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE'
+      },
+      artist_id: {
+        references: {
+          model: 'artists',
+          key: 'id'
+        },
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE'
       }
-      // artist_id: {
-      //   references: {
-      //     model: 'artists',
-      //     key: 'id'
-      //   },
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      //   onDelete: 'CASCADE'
-      // }
     },
     {
       sequelize,

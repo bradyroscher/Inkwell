@@ -13,7 +13,9 @@ const Login = async (req, res) => {
     ) {
       let payload = {
         id: user.id,
-        email: user.email
+        email: user.email,
+        name: user.name,
+        userType: user.userType
       }
       let token = middleware.createToken(payload)
       console.log(token)
@@ -44,7 +46,8 @@ const Register = async (req, res) => {
 
 const CheckLogin = async (req, res) => {
   try {
-    const { payload } = res.locals
+    const payload = res.locals.payload
+    console.log(payload)
     res.send(payload)
   } catch (error) {
     throw error

@@ -17,9 +17,9 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      user_id: {
+      artist_id: {
         references: {
-          model: 'users',
+          model: 'artists',
           key: 'id'
         },
         type: Sequelize.INTEGER,
