@@ -1,19 +1,19 @@
-const {
-  SET_USER_EMAIL,
-  SET_USER_PASSWORD,
-  SET_USER_NAME,
-  SET_USER_IMAGE,
-  SET_SELECTED_ARTIST
-} = require('../types')
+const { SET_SELECTED_ARTIST, SET_USER_DATA } = require('../types')
 
 const iState = {
-  email: '',
-  password: '',
-  name: '',
-  image: '',
-  selectedArtist: {}
+  selectedArtist: {},
+  userData: { id: '' }
 }
 
-const UserReducer = (state = iState, action) => {}
+const UserReducer = (state = iState, action) => {
+  switch (action.type) {
+    case SET_SELECTED_ARTIST:
+      return { ...state, selectedArtist: action.payload }
+    case SET_USER_DATA:
+      return { ...state, userData: action.payload }
+    default:
+      return { ...state }
+  }
+}
 
 export default UserReducer

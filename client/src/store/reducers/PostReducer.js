@@ -29,6 +29,8 @@ const PostReducer = (state = iState, action) => {
       return { ...state, text: '', image: '', postedBy: '', artistID: '' }
     case SET_POSTS:
       return { ...state, posts: action.payload }
+    default:
+      return { ...state }
   }
 }
 

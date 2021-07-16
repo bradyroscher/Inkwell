@@ -7,10 +7,25 @@ const {
   SET_ARTIST_PHOTO_REALISM,
   SET_ARTIST_JAPANESE,
   SET_ARTIST_PORTRAIT,
+  SET_ARTIST_WATER_COLOR,
+  SET_ARTIST_BIOMECHANICAL,
   SET_ARTIST_GEOMETRIC,
   SET_ARTIST_OTHER,
-  SET_ARTIST_DEFAULT
+  SET_ARTIST_DEFAULT,
+  SET_SHOP_ID,
+  SET_ARTIST_BIO,
+  SET_ARTIST_IMAGE
 } = require('../types')
+
+export const SetArtistImage = (link) => ({
+  type: SET_ARTIST_IMAGE,
+  payload: link
+})
+
+export const SetArtistBio = (text) => ({
+  type: SET_ARTIST_BIO,
+  payload: text
+})
 
 export const SetArtistShop = (text) => ({
   type: SET_ARTIST_SHOP,
@@ -47,13 +62,23 @@ export const SetArtistJapanese = (value) => ({
   payload: value
 })
 
-export const SetArtistGeometric = (value) => ({
-  type: SET_ARTIST_GEOMETRIC,
+export const SetArtistPortrait = (value) => ({
+  type: SET_ARTIST_PORTRAIT,
   payload: value
 })
 
-export const SetArtistPortrait = (value) => ({
-  type: SET_ARTIST_PORTRAIT,
+export const SetArtistWaterColor = (value) => ({
+  type: SET_ARTIST_WATER_COLOR,
+  payload: value
+})
+
+export const SetArtistBiomechanical = (value) => ({
+  type: SET_ARTIST_BIOMECHANICAL,
+  payload: value
+})
+
+export const SetArtistGeometric = (value) => ({
+  type: SET_ARTIST_GEOMETRIC,
   payload: value
 })
 
@@ -64,4 +89,9 @@ export const SetArtistOther = (value) => ({
 
 export const SetArtistDefault = () => ({
   type: SET_ARTIST_DEFAULT
+})
+
+export const SetShopID = (id) => ({
+  type: SET_SHOP_ID,
+  payload: id
 })

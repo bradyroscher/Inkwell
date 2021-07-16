@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import { Switch, Route } from 'react-router-dom'
 import ArtistPage from './pages/ArtistPage'
 import ArtistRegisterPage from './pages/ArtistRegisterPage'
@@ -6,32 +6,73 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ShopListPage from './pages/ShopListPage'
 import ShopPage from './pages/ShopPage'
+import ShopRegisterPage from './pages/ShopRegisterPage'
+import RegisterPage from './pages/RegisterPage'
+import NavBar from './components/NavBar'
+import { connect } from 'react-redux'
+import { SetAuthenticated } from './store/actions/AuthActions'
+import { useEffect } from 'react'
+import { StripTokenData } from './store/actions/UserActions'
 
-function App() {
+const mapStateToProps = ({ authState, userState }) => {
+  return { authState, userState }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAuthenticated: (value) => dispatch(SetAuthenticated(value)),
+    stripToken: () => dispatch(StripTokenData())
+  }
+}
+
+function App(props) {
+  const { userState, authState, stripToken } = props
+
+  const getToken = () => {
+    let token = localStorage.getItem('token')
+    console.log(token)
+    if (token) {
+      stripToken()
+      return props.setAuthenticated(true)
+    }
+  }
+
+  useEffect(() => {
+    getToken()
+  }, [])
+
+  console.log(userState)
+  console.log(authState)
+
   return (
     <div className="App">
+      <NavBar props={props} />
       <Switch>
-        <Route exact path="/" component={(props) => <LoginPage {...props} />} />
+        <Route exact path="/" render={(props) => <LoginPage {...props} />} />
+        <Route path="/shops" render={(props) => <ShopListPage {...props} />} />
         <Route
-          path="/shops"
-          component={(props) => <ShopListPage {...props} />}
+          path="/shop-register"
+          render={(props) => <ShopRegisterPage {...props} />}
         />
         <Route
-          path="/shops/:id"
-          component={(props) => <ShopPage {...props} />}
+          path="/shop-page/:id"
+          render={(props) => <ShopPage {...props} />}
         />
         <Route path="/home" component={(props) => <HomePage {...props} />} />
         <Route
           path="/artist/:id"
-          component={(props) => <ArtistPage {...props} />}
+          render={(props) => <ArtistPage {...props} />}
+        />
+        <Route
+          path="/register"
+          render={(props) => <RegisterPage {...props} />}
         />
         <Route
           path="/artist-register"
-          component={(props) => <ArtistRegisterPage {...props} />}
+          render={(props) => <ArtistRegisterPage {...props} />}
         />
       </Switch>
     </div>
   )
 }
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App)

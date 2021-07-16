@@ -4,7 +4,8 @@ const {
   SET_POST_POSTED_BY,
   SET_POST_ARTIST_ID,
   SET_POST_DEFAULT,
-  SET_POSTS
+  SET_POSTS,
+  ADD_POST
 } = require('../types')
 
 import { GetPosts } from '../../services/PostServices'

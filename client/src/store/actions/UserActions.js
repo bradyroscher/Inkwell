@@ -1,40 +1,32 @@
-const {
-  SET_USER_EMAIL,
-  SET_USER_PASSWORD,
-  SET_USER_NAME,
-  SET_USER_IMAGE,
-  SET_SELECTED_ARTIST
-} = require('../types')
+import { StripToken } from '../../services/AuthServices'
+import {
+  GetArtistsByID,
+  GetArtistsByShops,
+  GetProfile
+} from '../../services/UserServices'
+const { SET_SELECTED_ARTIST, SET_USER_DATA } = require('../types')
 
-import { GetArtistsByID, GetArtistsByShops } from '../../services/UserServices'
-
-export const SetUserEmail = (text) => ({
-  type: SET_USER_EMAIL,
-  payload: text
-})
-
-export const SetUserPassword = (text) => ({
-  type: SET_USER_PASSWORD,
-  payload: text
-})
-
-export const SetUserName = (text) => ({
-  type: SET_USER_NAME,
-  payload: text
-})
-
-export const SetUserImage = (link) => ({
-  type: SET_USER_IMAGE,
-  payload: link
-})
-
-export const SetSelectedArtist = async () => {
+export const SetSelectedArtist = (id) => {
   return async (dispatch) => {
     try {
-      const artist = await GetArtistsByID()
+      const artist = await GetProfile(id)
       dispatch({
         type: SET_SELECTED_ARTIST,
         payload: artist
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const StripTokenData = () => {
+  return async (dispatch) => {
+    try {
+      const data = await StripToken()
+      dispatch({
+        type: SET_USER_DATA,
+        payload: data
       })
     } catch (error) {
       console.log(error)
