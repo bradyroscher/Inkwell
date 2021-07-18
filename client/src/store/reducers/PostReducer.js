@@ -10,8 +10,6 @@ const {
 const iState = {
   text: '',
   image: '',
-  postedBy: '',
-  artistID: '',
   posts: []
 }
 
@@ -21,10 +19,6 @@ const PostReducer = (state = iState, action) => {
       return { ...state, text: action.payload }
     case SET_POST_IMAGE:
       return { ...state, image: action.payload }
-    case SET_POST_POSTED_BY:
-      return { ...state, postedBy: action.payload }
-    case SET_POST_ARTIST_ID:
-      return { ...state, artistID: action.payload }
     case SET_POST_DEFAULT:
       return { ...state, text: '', image: '', postedBy: '', artistID: '' }
     case SET_POSTS:

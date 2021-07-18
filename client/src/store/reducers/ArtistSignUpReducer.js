@@ -29,9 +29,9 @@ const iState = {
   waterColor: false,
   biomechanical: false,
   geometric: false,
-  other: null,
+  other: '',
   shopName: '',
-  shopID: null
+  shopID: ''
 }
 
 const ArtistSignUpReducer = (state = iState, action) => {

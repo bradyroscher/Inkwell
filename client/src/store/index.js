@@ -4,6 +4,7 @@ import PostReducer from './reducers/PostReducer'
 import ShopReducer from './reducers/ShopReducers'
 import UserReducer from './reducers/UserReducer'
 import AuthReducer from './reducers/AuthReducer'
+import ReviewReducer from './reducers/ReviewReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 const store = createStore(
@@ -12,7 +13,8 @@ const store = createStore(
     postState: PostReducer,
     userState: UserReducer,
     artistSignUpState: ArtistSignUpReducer,
-    authState: AuthReducer
+    authState: AuthReducer,
+    reviewState: ReviewReducer
   }),
   composeWithDevTools(applyMiddleware(thunk))
   //turn off devtools for prd

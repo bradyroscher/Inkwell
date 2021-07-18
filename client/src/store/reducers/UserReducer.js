@@ -2,7 +2,8 @@ const { SET_SELECTED_ARTIST, SET_USER_DATA } = require('../types')
 
 const iState = {
   selectedArtist: {},
-  userData: { id: '' }
+  userData: {},
+  posts: []
 }
 
 const UserReducer = (state = iState, action) => {

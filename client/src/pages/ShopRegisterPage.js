@@ -6,6 +6,7 @@ import {
   AddPostedShop
 } from '../store/actions/ShopActions'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const mapStateToProps = ({ shopState, userState }) => {
   return { shopState, userState }
@@ -20,7 +21,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const ShopRegisterPage = (props) => {
-  const handleSubmit = async (e) => {
+  const history = useHistory()
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     let obj = {
       name: props.shopState.shopName,
@@ -31,7 +34,8 @@ const ShopRegisterPage = (props) => {
       createdBy: props.userState.userData.id
     }
     console.log(obj)
-    await props.addShop(obj)
+    props.addShop(obj)
+    history.goBack()
   }
 
   console.log(props.shopState)

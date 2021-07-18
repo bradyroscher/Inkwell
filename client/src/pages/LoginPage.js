@@ -5,7 +5,7 @@ import {
   SetUserPassword,
   SetAuthenticated
 } from '../store/actions/AuthActions'
-import { Login } from '../services/AuthServices'
+import { logIn } from '../store/actions/UserActions'
 
 const mapStateToProps = ({ authState }) => {
   return { authState }
@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleEmail: (text) => dispatch(SetUserEmail(text)),
     handlePassword: (text) => dispatch(SetUserPassword(text)),
-    setAuthenticated: (value) => dispatch(SetAuthenticated(value))
+    setAuthenticated: (value) => dispatch(SetAuthenticated(value)),
+    submitLogIn: (obj) => dispatch(logIn(obj))
   }
 }
 
@@ -23,7 +24,7 @@ const LoginPage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    Login({
+    props.submitLogIn({
       email: props.authState.email,
       password: props.authState.password
     })

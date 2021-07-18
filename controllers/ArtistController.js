@@ -36,7 +36,10 @@ const GetUserWithArtistWithReviews = async (req, res) => {
       include: [
         {
           model: Artist,
-          include: [Review, Post]
+          include: [
+            { model: Review, order: ['createdAt', 'ASC'] },
+            { model: Post, order: ['createdAt', 'ASC'] }
+          ]
         }
       ]
     })
@@ -46,9 +49,23 @@ const GetUserWithArtistWithReviews = async (req, res) => {
   }
 }
 
+const UpdateUser = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.id)
+    let updatedUser = await User.update(req.body, {
+      where: { id: userId },
+      returning: true
+    })
+    res.send(updatedUser)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetUsers,
   AddArtist,
   GetUserWithArtistWithReviews,
-  GetArtists
+  GetArtists,
+  UpdateUser
 }

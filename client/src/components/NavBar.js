@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const NavBar = (props) => {
   const history = useHistory()
+  const { authState, userState } = props
   console.log(props.userState.userData.id)
   const logOut = () => {
     props.setAuthenticated(false)
@@ -24,15 +25,25 @@ const NavBar = (props) => {
   return (
     <header
       style={{
-        display: `${props.authState.authenticated ? 'flex' : 'none'}`
+        display: `${authState.authenticated ? 'flex' : 'none'}`
       }}
     >
-      <div>
+      <div
+        style={{
+          display: `${userState.userData.userType === 'user' ? 'flex' : 'none'}`
+        }}
+      >
         <NavLink to={`/artist-register`}>Register as Artist</NavLink>
       </div>
-      <div>
-        <NavLink to={`/artist/${props.userState.userData.id}`}>
-          view artist profile
+      <div
+        style={{
+          display: `${
+            userState.userData.userType === 'artist' ? 'flex' : 'none'
+          }`
+        }}
+      >
+        <NavLink to={`/artist/${userState.userData.id}`}>
+          View Artist Profile
         </NavLink>
       </div>
       <div>

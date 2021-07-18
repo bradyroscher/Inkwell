@@ -79,23 +79,27 @@ const ArtistRegisterPage = (props) => {
       shop_id: parseInt(props.artistSignUpState.shopID),
       user_id: parseInt(props.userState.userData.id)
     })
-    RegisterArtist({
-      image: props.artistSignUpState.image,
-      bio: props.artistSignUpState.bio,
-      americanTraditional: props.artistSignUpState.americanTraditional,
-      neoTraditional: props.artistSignUpState.neoTraditional,
-      tribal: props.artistSignUpState.tribal,
-      photoRealism: props.artistSignUpState.photoRealism,
-      japanese: props.artistSignUpState.japanese,
-      portrait: props.artistSignUpState.portrait,
-      waterColor: props.artistSignUpState.waterColor,
-      biomechanical: props.artistSignUpState.biomechanical,
-      geometric: props.artistSignUpState.geometric,
-      other: props.artistSignUpState.other,
-      shopName: props.artistSignUpState.shopNames,
-      shop_id: props.artistSignUpState.shopID,
-      user_id: parseInt(props.userState.userData.id)
-    })
+    RegisterArtist(
+      {
+        image: props.artistSignUpState.image,
+        bio: props.artistSignUpState.bio,
+        americanTraditional: props.artistSignUpState.americanTraditional,
+        neoTraditional: props.artistSignUpState.neoTraditional,
+        tribal: props.artistSignUpState.tribal,
+        photoRealism: props.artistSignUpState.photoRealism,
+        japanese: props.artistSignUpState.japanese,
+        portrait: props.artistSignUpState.portrait,
+        waterColor: props.artistSignUpState.waterColor,
+        biomechanical: props.artistSignUpState.biomechanical,
+        geometric: props.artistSignUpState.geometric,
+        other: props.artistSignUpState.other,
+        shopName: props.artistSignUpState.shopNames,
+        shop_id: props.artistSignUpState.shopID,
+        user_id: parseInt(props.userState.userData.id)
+      },
+      parseInt(props.userState.userData.id)
+    )
+    props.history.push(`/artist/${props.userState.userData.id}`)
   }
 
   const handleSearchSubmit = (e) => {
