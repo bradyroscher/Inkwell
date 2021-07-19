@@ -14,7 +14,8 @@ const {
   SET_ARTIST_GEOMETRIC,
   SET_SHOP_ID,
   SET_ARTIST_IMAGE,
-  SET_ARTIST_BIO
+  SET_ARTIST_BIO,
+  SET_ARTIST_LETTERING
 } = require('../types')
 
 const iState = {
@@ -29,6 +30,7 @@ const iState = {
   waterColor: false,
   biomechanical: false,
   geometric: false,
+  lettering: false,
   other: '',
   shopName: '',
   shopID: ''
@@ -62,6 +64,8 @@ const ArtistSignUpReducer = (state = iState, action) => {
       return { ...state, biomechanical: action.payload }
     case SET_ARTIST_GEOMETRIC:
       return { ...state, geometric: action.payload }
+    case SET_ARTIST_LETTERING:
+      return { ...state, lettering: action.payload }
     case SET_ARTIST_OTHER:
       return { ...state, other: action.payload }
     case SET_ARTIST_DEFAULT:
@@ -77,9 +81,10 @@ const ArtistSignUpReducer = (state = iState, action) => {
         waterColor: false,
         biomechanical: false,
         geometric: false,
-        other: null,
+        lettering: false,
+        other: '',
         shopName: '',
-        shopID: null
+        shopID: ''
       }
     case SET_SHOP_ID:
       return { ...state, shopID: action.payload }

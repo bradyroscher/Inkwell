@@ -18,7 +18,8 @@ import {
   SetArtistGeometric,
   SetArtistOther,
   SetArtistBio,
-  SetArtistImage
+  SetArtistImage,
+  SetArtistLettering
 } from '../store/actions/ArtistSignUpActions'
 import { SetShopID } from '../store/actions/ArtistSignUpActions'
 import { RegisterArtist } from '../services/UserServices'
@@ -42,6 +43,7 @@ const mapDispatchToProps = (dispatch) => {
     handlePhotoRealism: (value) => dispatch(SetArtistPhotoRealism(value)),
     handleGeometric: (value) => dispatch(SetArtistGeometric(value)),
     handleTribal: (value) => dispatch(SetArtistTribal(value)),
+    handleLettering: (value) => dispatch(SetArtistLettering(value)),
     handleOther: (value) => dispatch(SetArtistOther(value)),
     handleImage: (link) => dispatch(SetArtistImage(link)),
     handleBio: (text) => dispatch(SetArtistBio(text))
@@ -63,22 +65,6 @@ const ArtistRegisterPage = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log({
-      image: props.artistSignUpState.image,
-      bio: props.artistSignUpState.bio,
-      americanTraditional: props.artistSignUpState.americanTraditional,
-      neoTraditional: props.artistSignUpState.neoTraditional,
-      tribal: props.artistSignUpState.tribal,
-      photoRealism: props.artistSignUpState.photoRealism,
-      japanese: props.artistSignUpState.japanese,
-      portrait: props.artistSignUpState.portrait,
-      waterColor: props.artistSignUpState.waterColor,
-      biomechanical: props.artistSignUpState.biomechanical,
-      geometric: props.artistSignUpState.geometric,
-      other: props.artistSignUpState.other,
-      shop_id: parseInt(props.artistSignUpState.shopID),
-      user_id: parseInt(props.userState.userData.id)
-    })
     RegisterArtist(
       {
         image: props.artistSignUpState.image,
@@ -92,6 +78,7 @@ const ArtistRegisterPage = (props) => {
         waterColor: props.artistSignUpState.waterColor,
         biomechanical: props.artistSignUpState.biomechanical,
         geometric: props.artistSignUpState.geometric,
+        lettering: props.artistSignUpState.lettering,
         other: props.artistSignUpState.other,
         shopName: props.artistSignUpState.shopNames,
         shop_id: props.artistSignUpState.shopID,
@@ -193,6 +180,15 @@ const ArtistRegisterPage = (props) => {
           onClick={() =>
             props.handleBiomechanical(
               checkBoolean(props.artistSignUpState.biomechanical)
+            )
+          }
+        />
+        <div>Lettering</div>
+        <CheckboxToggle
+          value={props.artistSignUpState.lettering}
+          onClick={() =>
+            props.handleBiomechanical(
+              checkBoolean(props.artistSignUpState.lettering)
             )
           }
         />

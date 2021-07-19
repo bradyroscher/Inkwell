@@ -1,8 +1,7 @@
 const {
   SET_POST_TEXT,
   SET_POST_IMAGE,
-  SET_POST_POSTED_BY,
-  SET_POST_ARTIST_ID,
+  SET_POST_TYPE,
   SET_POST_DEFAULT,
   SET_POSTS
 } = require('../types')
@@ -10,6 +9,7 @@ const {
 const iState = {
   text: '',
   image: '',
+  type: '',
   posts: []
 }
 
@@ -19,6 +19,8 @@ const PostReducer = (state = iState, action) => {
       return { ...state, text: action.payload }
     case SET_POST_IMAGE:
       return { ...state, image: action.payload }
+    case SET_POST_TYPE:
+      return { ...state, type: action.payload }
     case SET_POST_DEFAULT:
       return { ...state, text: '', image: '', postedBy: '', artistID: '' }
     case SET_POSTS:

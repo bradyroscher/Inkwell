@@ -17,6 +17,22 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
+      style: {
+        type: Sequelize.ENUM,
+        values: [
+          'americanTraditional',
+          'neoTraditional',
+          'tribal',
+          'photoRealism',
+          'japanese',
+          'portrait',
+          'geometric',
+          'waterColor',
+          'biomechanical',
+          'lettering',
+          'other'
+        ]
+      },
       artist_id: {
         references: {
           model: 'artists',

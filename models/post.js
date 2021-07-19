@@ -21,6 +21,22 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING,
       postedBy: DataTypes.STRING,
       text: DataTypes.STRING,
+      style: {
+        type: DataTypes.ENUM,
+        values: [
+          'americanTraditional',
+          'neoTraditional',
+          'tribal',
+          'photoRealism',
+          'japanese',
+          'portrait',
+          'geometric',
+          'waterColor',
+          'biomechanical',
+          'lettering',
+          'other'
+        ]
+      },
       artist_id: {
         references: {
           model: 'artists',

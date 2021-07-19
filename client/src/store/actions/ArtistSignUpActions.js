@@ -10,6 +10,7 @@ const {
   SET_ARTIST_WATER_COLOR,
   SET_ARTIST_BIOMECHANICAL,
   SET_ARTIST_GEOMETRIC,
+  SET_ARTIST_LETTERING,
   SET_ARTIST_OTHER,
   SET_ARTIST_DEFAULT,
   SET_SHOP_ID,
@@ -79,6 +80,11 @@ export const SetArtistBiomechanical = (value) => ({
 
 export const SetArtistGeometric = (value) => ({
   type: SET_ARTIST_GEOMETRIC,
+  payload: value
+})
+
+export const SetArtistLettering = (value) => ({
+  type: SET_ARTIST_LETTERING,
   payload: value
 })
 

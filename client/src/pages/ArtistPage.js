@@ -11,7 +11,8 @@ import {
 import {
   SetPostImage,
   SetPostText,
-  AddPostToPosts
+  AddPostToPosts,
+  SetPostType
 } from '../store/actions/PostActions'
 import { PostReview } from '../services/ReviewServices'
 import { SubmitPost } from '../services/PostServices'
@@ -27,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
     handlePostText: (text) => dispatch(SetPostText(text)),
     handlePostImage: (link) => dispatch(SetPostImage(link)),
     addPost: (array) => dispatch(AddPostToPosts(array)),
-    setAverage: (num) => dispatch(SetAverage(num))
+    setAverage: (num) => dispatch(SetAverage(num)),
+    handleType: (value) => dispatch(SetPostType(value))
   }
 }
 
@@ -61,6 +63,7 @@ const ArtistPage = (props) => {
       image: postState.image,
       text: postState.text,
       postedBy: userState.userData.name,
+      style: postState.type,
       artist_id: userState.selectedArtist.user.Artist.id
     })
     props.addPost([
@@ -79,10 +82,15 @@ const ArtistPage = (props) => {
   const getArtist = () => {
     props.getProfile(props.match.params.id)
     let sum = 0
-    reviewState.reviews.forEach((review) => {
-      sum += parseInt(review.rating)
-    })
-    props.setAverage(sum / reviewState.reviews.length)
+    console.log(reviewState.reviews)
+    if (!reviewState.reviews.length) {
+      props.setAverage('No reviews yet!')
+    } else {
+      reviewState.reviews.forEach((review) => {
+        sum += parseInt(review.rating)
+      })
+      props.setAverage(sum / reviewState.reviews.length)
+    }
   }
 
   useEffect(() => {
@@ -198,6 +206,20 @@ const ArtistPage = (props) => {
               value={postState.text}
               onChange={(e) => props.handlePostText(e.target.value)}
             />
+            <select onChange={(e) => props.handleType(e.target.value)}>
+              <option value={'americanTraditional'}>
+                American Traditional
+              </option>
+              <option value={'neoTraditional'}>Neo Traditional</option>
+              <option value={'tribal'}>Tribal</option>
+              <option value={'japanese'}> Japanese</option>
+              <option value={'photoRealism'}>Photo Realism</option>
+              <option value={'portrait'}>Portrait</option>
+              <option value={'geometric'}>Geometric</option>
+              <option value={'waterColor'}>Water Color</option>
+              <option value={'biomechanical'}>Biomechanical</option>
+              <option value={'other'}>Other</option>
+            </select>
             <button>Submit</button>
           </form>
         </div>

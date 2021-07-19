@@ -3,7 +3,8 @@ const {
   SET_POST_TEXT,
   SET_POST_IMAGE,
   SET_POST_DEFAULT,
-  SET_POSTS
+  SET_POSTS,
+  SET_POST_TYPE
 } = require('../types')
 
 export const SetPostText = (text) => ({
@@ -14,6 +15,11 @@ export const SetPostText = (text) => ({
 export const SetPostImage = (link) => ({
   type: SET_POST_IMAGE,
   payload: link
+})
+
+export const SetPostType = (value) => ({
+  type: SET_POST_TYPE,
+  payload: value
 })
 
 export const SetPostDefault = () => ({

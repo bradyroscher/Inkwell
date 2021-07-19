@@ -43,7 +43,7 @@ const NavBar = (props) => {
         }}
       >
         <NavLink to={`/artist/${userState.userData.id}`}>
-          View Artist Profile
+          view artist profile
         </NavLink>
       </div>
       <div>

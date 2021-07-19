@@ -13,7 +13,7 @@ export const Login = async (obj) => {
   try {
     const res = await Client.post(`/auth/login`, obj)
     localStorage.setItem('token', res.data.token)
-    return res.data
+    return res.data.user
   } catch (error) {
     console.log(error)
   }
