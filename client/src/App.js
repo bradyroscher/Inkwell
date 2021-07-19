@@ -57,7 +57,7 @@ function App(props) {
           path="/shop-page/:id"
           render={(props) => <ShopPage {...props} />}
         />
-        <Route path="/home" component={(props) => <HomePage {...props} />} />
+        <Route path="/home" render={(props) => <HomePage {...props} />} />
         <Route
           path="/artist/:id"
           render={(props) => <ArtistPage {...props} />}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import {
   SetUserEmail,
@@ -33,6 +33,12 @@ const LoginPage = (props) => {
     console.log('fired')
     props.history.push('/home')
   }
+
+  useEffect(() => {
+    if (props.authState.authenicated) {
+      props.history.push('/home')
+    }
+  }, [])
 
   return (
     <div>

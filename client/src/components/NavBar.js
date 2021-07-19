@@ -25,31 +25,58 @@ const NavBar = (props) => {
   return (
     <header
       style={{
-        display: `${authState.authenticated ? 'flex' : 'none'}`
+        display: `${authState.authenticated ? 'flex' : 'none'}`,
+        alignItems: 'center',
+        justifyContent: 'space-between'
       }}
+      className="navbar"
     >
-      <div
-        style={{
-          display: `${userState.userData.userType === 'user' ? 'flex' : 'none'}`
-        }}
-      >
-        <NavLink to={`/artist-register`}>Register as Artist</NavLink>
-      </div>
-      <div
-        style={{
-          display: `${
-            userState.userData.userType === 'artist' ? 'flex' : 'none'
-          }`
-        }}
-      >
-        <NavLink to={`/artist/${userState.userData.id}`}>
-          view artist profile
-        </NavLink>
-      </div>
       <div>
-        <NavLink to="/shops">View Shops</NavLink>
+        <div
+          style={{
+            display: `${
+              userState.userData.userType === 'user' ? 'flex' : 'none'
+            }`
+          }}
+        >
+          <NavLink to={`/artist-register`} className="profile-nav">
+            PROFILE
+          </NavLink>
+        </div>
+        <div
+          style={{
+            display: `${
+              userState.userData.userType === 'artist' ? 'flex' : 'none'
+            }`
+          }}
+        >
+          <NavLink
+            to={`/artist/${userState.userData.id}`}
+            className="profile-nav"
+          >
+            PROFILE
+          </NavLink>
+        </div>
+        <div>
+          <NavLink to="/shops" className="profile-nav">
+            SHOPS
+          </NavLink>
+        </div>
       </div>
-      <button onClick={logOut}>Log Out</button>
+      <NavLink
+        to="home"
+        className="INKWELL"
+        style={{
+          fontFamily: "'New Rocker', cursive",
+          textDecoration: 'none',
+          fontSize: '40px'
+        }}
+      >
+        INKWELL
+      </NavLink>
+      <div onClick={logOut} className="log-out">
+        Log Out
+      </div>
     </header>
   )
 }

@@ -109,89 +109,133 @@ const ArtistRegisterPage = (props) => {
           onChange={(e) => props.handleBio(e.target.value)}
         />
         <div>American Traditional</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.americanTraditional}
-          onClick={() =>
-            props.handleAmericanTraditional(
-              checkBoolean(props.artistSignUpState.americanTraditional)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.americanTraditional}
+            onClick={() =>
+              props.handleAmericanTraditional(
+                checkBoolean(props.artistSignUpState.americanTraditional)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Neo Traditional</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.neoTraditional}
-          onClick={() =>
-            props.handleNeoTraditional(
-              checkBoolean(props.artistSignUpState.neoTraditional)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.neoTraditional}
+            onClick={() =>
+              props.handleNeoTraditional(
+                checkBoolean(props.artistSignUpState.neoTraditional)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Tribal</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.tribal}
-          onClick={() =>
-            props.handleTribal(checkBoolean(props.artistSignUpState.tribal))
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.tribal}
+            onClick={() =>
+              props.handleTribal(checkBoolean(props.artistSignUpState.tribal))
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Photorealism</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.photoRealism}
-          onClick={() =>
-            props.handlePhotoRealism(
-              checkBoolean(props.artistSignUpState.photoRealism)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.photoRealism}
+            onClick={() =>
+              props.handlePhotoRealism(
+                checkBoolean(props.artistSignUpState.photoRealism)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>japanese</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.japanese}
-          onClick={() =>
-            props.handleJapanese(checkBoolean(props.artistSignUpState.japanese))
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.japanese}
+            onClick={() =>
+              props.handleJapanese(
+                checkBoolean(props.artistSignUpState.japanese)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Portrait</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.portrait}
-          onClick={() =>
-            props.handlePortrait(checkBoolean(props.artistSignUpState.portrait))
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.portrait}
+            onClick={() =>
+              props.handlePortrait(
+                checkBoolean(props.artistSignUpState.portrait)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>geometric</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.geometric}
-          onClick={() =>
-            props.handleGeometric(
-              checkBoolean(props.artistSignUpState.geometric)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.geometric}
+            onClick={() =>
+              props.handleGeometric(
+                checkBoolean(props.artistSignUpState.geometric)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Water Color</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.waterColor}
-          onClick={() => {
-            props.handleWaterColor(
-              checkBoolean(props.artistSignUpState.waterColor)
-            )
-          }}
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.waterColor}
+            onClick={() =>
+              props.handleWaterColor(
+                checkBoolean(props.artistSignUpState.waterColor)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Biomechanical</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.biomechanical}
-          onClick={() =>
-            props.handleBiomechanical(
-              checkBoolean(props.artistSignUpState.biomechanical)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.biomechanical}
+            onClick={() =>
+              props.handleBiomechanical(
+                checkBoolean(props.artistSignUpState.biomechanical)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Lettering</div>
-        <CheckboxToggle
-          value={props.artistSignUpState.lettering}
-          onClick={() =>
-            props.handleBiomechanical(
-              checkBoolean(props.artistSignUpState.lettering)
-            )
-          }
-        />
+        <label className="switch">
+          <input
+            type="checkbox"
+            value={props.artistSignUpState.lettering}
+            onClick={() =>
+              props.handleLettering(
+                checkBoolean(props.artistSignUpState.lettering)
+              )
+            }
+          />
+          <span className="slider round"></span>
+        </label>
         <div>Let us any other styles you know!</div>
         <textarea
           value={props.artistSignUpState.other}
@@ -206,17 +250,16 @@ const ArtistRegisterPage = (props) => {
       <button onClick={(e) => props.history.push('/shop-register')}>
         Register Shop
       </button>
-      <form onSubmit={handleSearchSubmit}>
+      <form onSubmit={handleSearchSubmit} style={{ display: 'flex' }}>
         <input
           value={props.shopState.query}
           onChange={(e) => props.handleQuery(e.target.value)}
         />
-        <button>search</button>
+        <div className="filter-button">search</div>
       </form>
       <select
         onChange={(e) => {
           props.setShopID(e.target.value)
-          props.setShopName(e.target.innerText)
         }}
         style={{
           display: props.shopState.shops.length ? 'flex' : 'none'

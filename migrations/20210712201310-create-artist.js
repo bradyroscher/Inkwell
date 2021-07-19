@@ -50,6 +50,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      lettering: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
       other: {
         allowNull: false,
         type: Sequelize.STRING

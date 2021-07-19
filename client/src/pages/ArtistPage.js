@@ -6,7 +6,9 @@ import { SetSelectedArtist } from '../store/actions/UserActions'
 import {
   SetReviews,
   SetReviewText,
-  SetAverage
+  SetAverage,
+  SetRating,
+  DeleteReview
 } from '../store/actions/ReviewActions'
 import {
   SetPostImage,
@@ -24,12 +26,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProfile: (id) => dispatch(SetSelectedArtist(id)),
     handleReviewText: (text) => dispatch(SetReviewText(text)),
+    handleRating: (num) => dispatch(SetRating(num)),
     addReview: (array) => dispatch(SetReviews(array)),
     handlePostText: (text) => dispatch(SetPostText(text)),
     handlePostImage: (link) => dispatch(SetPostImage(link)),
     addPost: (array) => dispatch(AddPostToPosts(array)),
     setAverage: (num) => dispatch(SetAverage(num)),
-    handleType: (value) => dispatch(SetPostType(value))
+    handleType: (value) => dispatch(SetPostType(value)),
+    deleteReview: (index) => dispatch(DeleteReview(index))
   }
 }
 
@@ -39,7 +43,7 @@ const ArtistPage = (props) => {
   const handleReviewSubmit = (e) => {
     e.preventDefault()
     PostReview({
-      rating: 5,
+      rating: reviewState.reviewRating,
       text: reviewState.text,
       postedBy: userState.userData.name,
       user_id: userState.userData.id,
@@ -48,7 +52,7 @@ const ArtistPage = (props) => {
     props.addReview([
       ...reviewState.reviews,
       {
-        rating: 5,
+        rating: reviewState.reviewRating,
         text: reviewState.text,
         postedBy: userState.userData.name,
         user_id: userState.userData.id,
@@ -99,94 +103,134 @@ const ArtistPage = (props) => {
 
   if (userState.selectedArtist.user) {
     return (
-      <div>
-        <img src={userState.selectedArtist.user.Artist.image} />
-        <div>{userState.selectedArtist.user.name}</div>
-        <div>{userState.selectedArtist.user.Artist.bio}</div>
-        <div>Average Rating: {reviewState.average}</div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.americanTraditional
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          American Traditional
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
+        <div style={{ display: 'flex', width: '100%', marginTop: '75px' }}>
+          <div style={{ width: '50%' }}>
+            <img
+              style={{ width: '80%' }}
+              src={userState.selectedArtist.user.Artist.image}
+            />
+          </div>
+          <div style={{ width: '50%' }}>
+            <div style={{ fontSize: '80px' }}>
+              {userState.selectedArtist.user.name}
+            </div>
+            <div>Average Rating: {reviewState.average}</div>
+            <div className="style-grid">
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist
+                    .americanTraditional
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                American Traditional
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.neoTraditional
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Neo Traditional
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.geometric
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Geometric
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.biomechanical
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Biomechanical
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.waterColor
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Water Color
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.tribal
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Tribal
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.photoRealism
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Photo Realism
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.japanese
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Japanese
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.portrait
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Portrait
+              </div>
+              <div
+                className="style"
+                style={{
+                  display: userState.selectedArtist.user.Artist.lettering
+                    ? 'flex'
+                    : 'none'
+                }}
+              >
+                Lettering
+              </div>
+            </div>
+            <div>Bio:</div>
+            <div style={{ textAlign: 'left' }}>
+              {userState.selectedArtist.user.Artist.bio}
+            </div>
+          </div>
         </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.neoTraditional
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Neo Traditional
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.geometric
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Geometric
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.biomechanical
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Biomechanical
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.waterColor
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Water Color
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.tribal
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Tribal
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.photoRealism
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Photo Realism
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.japanese
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Japanese
-        </div>
-        <div
-          style={{
-            display: userState.selectedArtist.user.Artist.portrait
-              ? 'flex'
-              : 'none'
-          }}
-        >
-          Portrait
-        </div>
-        <div>{userState.selectedArtist.user.Artist.other}</div>
-
         {/*  ###### POST FEATURE RENDER ######  */}
 
         <div
@@ -207,6 +251,9 @@ const ArtistPage = (props) => {
               onChange={(e) => props.handlePostText(e.target.value)}
             />
             <select onChange={(e) => props.handleType(e.target.value)}>
+              <option default value="">
+                All
+              </option>
               <option value={'americanTraditional'}>
                 American Traditional
               </option>
@@ -218,6 +265,7 @@ const ArtistPage = (props) => {
               <option value={'geometric'}>Geometric</option>
               <option value={'waterColor'}>Water Color</option>
               <option value={'biomechanical'}>Biomechanical</option>
+              <option value={'lettering'}>Lettering</option>
               <option value={'other'}>Other</option>
             </select>
             <button>Submit</button>
@@ -232,27 +280,141 @@ const ArtistPage = (props) => {
 
         {/* ####### REVIEW FORM ######### */}
         <div
+          className="review-div"
           style={{
-            display:
-              userState.selectedArtist.user.id !== userState.userData.id
-                ? 'flex'
-                : 'none'
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: '40px'
           }}
         >
-          <form onSubmit={handleReviewSubmit}>
-            <input
-              value={reviewState.text}
-              onChange={(e) => props.handleReviewText(e.target.value)}
-            />
-            <button>SUBMIT</button>
-          </form>
+          <div
+            style={{
+              display:
+                userState.selectedArtist.user.id !== userState.userData.id
+                  ? 'flex'
+                  : 'none',
+              marginTop: '30px'
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-end'
+              }}
+            >
+              <div style={{ marginBottom: '10px' }}>Leave a review!</div>
+              <form onSubmit={handleReviewSubmit}>
+                <textarea
+                  value={reviewState.text}
+                  className="input"
+                  onChange={(e) => props.handleReviewText(e.target.value)}
+                  style={{
+                    width: '500px',
+                    height: '80px',
+                    backgroundColor: '#292929'
+                  }}
+                />
+              </form>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div>
+                  <span
+                    style={{
+                      color:
+                        reviewState.reviewRating >= 1 ? '#FF3131' : 'white',
+                      cursor: 'pointer',
+                      fontSize: '40px',
+                      fontFamily: 'cursive'
+                    }}
+                    onClick={(e) => props.handleRating(1)}
+                  >
+                    &#10039;
+                  </span>
+                  <span
+                    style={{
+                      color:
+                        reviewState.reviewRating >= 2 ? '#FF3131' : 'white',
+                      cursor: 'pointer',
+                      fontSize: '40px'
+                    }}
+                    onClick={(e) => props.handleRating(2)}
+                  >
+                    &#10039;
+                  </span>
+                  <span
+                    style={{
+                      color:
+                        reviewState.reviewRating >= 3 ? '#FF3131' : 'white',
+                      cursor: 'pointer',
+                      fontSize: '40px',
+                      fontFamily: 'cursive'
+                    }}
+                    onClick={(e) => props.handleRating(3)}
+                  >
+                    &#10039;
+                  </span>
+                  <span
+                    style={{
+                      color:
+                        reviewState.reviewRating >= 4 ? '#FF3131' : 'white',
+                      cursor: 'pointer',
+                      fontSize: '40px',
+                      fontFamily: 'cursive'
+                    }}
+                    onClick={(e) => props.handleRating(4)}
+                  >
+                    &#10039;
+                  </span>
+                  <span
+                    style={{
+                      color:
+                        reviewState.reviewRating >= 5 ? '#FF3131' : 'white',
+                      cursor: 'pointer',
+                      fontSize: '40px',
+                      fontFamily: 'cursive'
+                    }}
+                    onClick={(e) => props.handleRating(5)}
+                  >
+                    &#10039;
+                  </span>
+                </div>
+                <div
+                  class="filter-button"
+                  style={{ height: '20px' }}
+                  onClick={handleReviewSubmit}
+                >
+                  SUBMIT
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ##### REVIEW MAP ##### */}
+          <div>{reviewState.reviews.length} Reviews</div>
+          <div
+            style={{
+              width: '65vw',
+              display: 'flex',
+              flexDirection: 'column-reverse',
+              textAlign: 'left'
+            }}
+          >
+            {reviewState.reviews.map((review, index) => (
+              <ReviewCard
+                key={index}
+                index={index}
+                id={review.id}
+                text={review.text}
+                rating={review.rating}
+                postedBy={review.postedBy}
+                userID={userState.userData.id}
+                reviewID={review.user_id}
+                remove={props.deleteReview}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* ##### REVIEW MAP ##### */}
-
-        {reviewState.reviews.map((review, index) => (
-          <ReviewCard key={index} text={review.text} rating={review.rating} />
-        ))}
       </div>
     )
   } else {

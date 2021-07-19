@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       geometric: DataTypes.BOOLEAN,
       waterColor: DataTypes.BOOLEAN,
       biomechanical: DataTypes.BOOLEAN,
+      lettering: DataTypes.BOOLEAN,
       other: DataTypes.STRING,
       user_id: {
         references: {

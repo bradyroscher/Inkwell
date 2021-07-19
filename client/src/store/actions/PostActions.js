@@ -1,4 +1,4 @@
-import { GetPosts } from '../../services/PostServices'
+import { GetPosts, GetPostsByStyle } from '../../services/PostServices'
 const {
   SET_POST_TEXT,
   SET_POST_IMAGE,
@@ -31,10 +31,24 @@ export const AddPostToPosts = (array) => ({
   payload: array
 })
 
-export const SetPosts = async () => {
+export const SetPosts = () => {
   return async (dispatch) => {
     try {
       const posts = await GetPosts()
+      dispatch({
+        type: SET_POSTS,
+        payload: posts
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const SetPostsByStyle = (style) => {
+  return async (dispatch) => {
+    try {
+      const posts = await GetPostsByStyle(style)
       dispatch({
         type: SET_POSTS,
         payload: posts

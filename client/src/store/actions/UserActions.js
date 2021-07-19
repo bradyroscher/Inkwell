@@ -5,7 +5,8 @@ const {
   SET_USER_DATA,
   SET_REVIEWS,
   SET_POSTS,
-  SET_AUTHENTICATED
+  SET_AUTHENTICATED,
+  SET_HOME_TYPE
 } = require('../types')
 
 export const SetSelectedArtist = (id) => {
@@ -29,6 +30,11 @@ export const SetSelectedArtist = (id) => {
     }
   }
 }
+
+export const SetHomeType = (value) => ({
+  type: SET_HOME_TYPE,
+  payload: value
+})
 
 export const StripTokenData = () => {
   return async (dispatch) => {

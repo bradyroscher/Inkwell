@@ -33,7 +33,7 @@ const ShopListPage = (props) => {
   }, [setShops])
 
   return (
-    <div>
+    <div style={{ marginTop: '10vh' }}>
       <form onSubmit={handleSubmit}>
         <input
           value={props.shopState.query}

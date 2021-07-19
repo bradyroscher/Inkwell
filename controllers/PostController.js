@@ -21,10 +21,10 @@ const GetAmericanTraditionalPosts = async (req, res) => {
   }
 }
 
-const GetNeoTraditionalPosts = async (req, res) => {
+const GetPostsByStyle = async (req, res) => {
   try {
     const posts = await Post.findAll({
-      where: { type: req.params.type },
+      where: { style: req.params.style },
       returning: true
     })
     res.send(posts)
@@ -42,9 +42,23 @@ const PostPost = async (req, res) => {
   }
 }
 
+const UpdatePost = async (req, res) => {
+  try {
+    let post_id = parseInt(req.params.post_id)
+    console.log(post_id)
+    let post = await Post.update(req.body, {
+      where: { id: post_id },
+      returning: true
+    })
+    res.send(post)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetAllPosts,
-  GetAmericanTraditionalPosts,
-  GetNeoTraditionalPosts,
-  PostPost
+  GetPostsByStyle,
+  PostPost,
+  UpdatePost
 }

@@ -3,6 +3,6 @@ const controller = require('../controllers/PostController')
 
 Router.post('/', controller.PostPost)
 Router.get('/all', controller.GetAllPosts)
-Router.get('/americanTraditional', controller.GetAmericanTraditionalPosts)
-Router.get('/type/:type', controller.GetNeoTraditionalPosts)
+Router.get('/style/:style', controller.GetPostsByStyle)
+Router.put('/:post_id', controller.UpdatePost)
 module.exports = Router
