@@ -5,6 +5,7 @@ import {
   SetShops,
   SetQuery
 } from '../store/actions/ShopActions'
+import ShopCard from '../components/ShopCard'
 
 const mapStateToProps = ({ shopState }) => {
   return { shopState }
@@ -33,7 +34,15 @@ const ShopListPage = (props) => {
   }, [setShops])
 
   return (
-    <div style={{ marginTop: '10vh' }}>
+    <div
+      style={{
+        marginTop: '10vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100vw'
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <input
           value={props.shopState.query}
@@ -41,14 +50,24 @@ const ShopListPage = (props) => {
         />
         <button>search</button>
       </form>
-      {props.shopState.shops.map((shop, index) => (
-        <div
-          key={index}
-          onClick={() => props.history.push(`/shop-page/${shop.id}`)}
-        >
-          <div>{shop.name}</div>
-        </div>
-      ))}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        {props.shopState.shops.map((shop, index) => (
+          <ShopCard
+            key={index}
+            name={shop.name}
+            address={shop.address}
+            image={shop.image}
+            id={shop.id}
+          />
+        ))}
+      </div>
     </div>
   )
 }

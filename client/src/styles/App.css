@@ -26,6 +26,7 @@ body {
   background-color: #4d4d4c;
   color: white;
   padding: 15px;
+  transition: ease-in-out 0.3s;
 }
 
 .input:focus {
@@ -226,4 +227,24 @@ input:checked + .slider:before {
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+/* SHOP LIST PAGE */
+.shop-card {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
+
+.artist-card {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+  transition: ease-in-out 0.2s;
+}
+
+.artist-card:hover {
+  border: 1px solid white;
 }

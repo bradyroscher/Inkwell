@@ -92,7 +92,7 @@ const PostCardArtistPage = (props) => {
                 marginBottom: '-20px',
                 marginRight: '-15px'
               }}
-              class="edit-icon"
+              className="edit-icon"
             >
               &#9998;
             </span>
@@ -190,7 +190,7 @@ const PostCardArtistPage = (props) => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <div
-                class="filter-button"
+                className="filter-button"
                 style={{
                   height: '15px',
                   textAlign: 'center',
@@ -203,7 +203,7 @@ const PostCardArtistPage = (props) => {
                 SUBMIT
               </div>
               <div
-                class="filter-button"
+                className="filter-button"
                 style={{
                   height: '15px',
                   textAlign: 'center',

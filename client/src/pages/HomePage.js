@@ -69,11 +69,13 @@ const HomePage = (props) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
       >
-        {postState.posts.map((post, index) =>
-          post.Artist ? (
+        {
+          postState.posts.map((post, index) => (
+            // post.Artist ? (
             <PostCard
               key={index}
               index={index}
@@ -85,8 +87,11 @@ const HomePage = (props) => {
               postedBy={post.postedBy}
               profilePic={post.Artist.image}
             />
-          ) : null
-        )}
+          ))
+          // : null
+
+          // )
+        }
       </div>
     </div>
   )

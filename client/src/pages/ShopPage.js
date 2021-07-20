@@ -25,14 +25,23 @@ const ShopPage = (props) => {
         <img src={shopState.selectedShop.image} />
         <h1>{shopState.selectedShop.name}</h1>
         <div>{shopState.selectedShop.address}</div>
-        {shopState.selectedShop.Artists.map((artist, index) => (
-          <ArtistCard
-            key={index}
-            name={artist.User.name}
-            image={artist.image}
-            id={artist.User.id}
-          />
-        ))}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          {shopState.selectedShop.Artists.map((artist, index) => (
+            <ArtistCard
+              key={index}
+              name={artist.User.name}
+              image={artist.image}
+              reviews={artist.Reviews}
+              id={artist.User.id}
+            />
+          ))}
+        </div>
       </div>
     )
   } else {

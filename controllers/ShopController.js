@@ -41,7 +41,7 @@ const GetShopWithArtists = async (req, res) => {
       include: [
         {
           model: Artist,
-          include: [User]
+          include: [User, Review]
         }
       ]
     })
