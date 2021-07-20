@@ -1,19 +1,9 @@
-const { Post } = require('../models')
+const { Post, Artist, User } = require('../models')
 
 const GetAllPosts = async (req, res) => {
   try {
-    const posts = await Post.findAll()
-    res.send(posts)
-  } catch (error) {
-    throw error
-  }
-}
-
-const GetAmericanTraditionalPosts = async (req, res) => {
-  try {
     const posts = await Post.findAll({
-      where: { americanTraditional: true },
-      returning: true
+      include: [{ model: Artist, include: [User] }]
     })
     res.send(posts)
   } catch (error) {
@@ -25,7 +15,8 @@ const GetPostsByStyle = async (req, res) => {
   try {
     const posts = await Post.findAll({
       where: { style: req.params.style },
-      returning: true
+      returning: true,
+      include: [{ model: Artist, include: [User] }]
     })
     res.send(posts)
   } catch (error) {
@@ -56,9 +47,20 @@ const UpdatePost = async (req, res) => {
   }
 }
 
+const DeletePost = async (req, res) => {
+  try {
+    let id = parseInt(req.params.id)
+    await Post.destroy({ where: { id: id } })
+    res.send({ message: 'Post Deleted' })
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   GetAllPosts,
   GetPostsByStyle,
   PostPost,
-  UpdatePost
+  UpdatePost,
+  DeletePost
 }

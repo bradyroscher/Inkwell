@@ -30,7 +30,7 @@ const ShopPage = (props) => {
             key={index}
             name={artist.User.name}
             image={artist.image}
-            id={artist.id}
+            id={artist.User.id}
           />
         ))}
       </div>

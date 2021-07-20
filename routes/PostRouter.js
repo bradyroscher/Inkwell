@@ -5,4 +5,5 @@ Router.post('/', controller.PostPost)
 Router.get('/all', controller.GetAllPosts)
 Router.get('/style/:style', controller.GetPostsByStyle)
 Router.put('/:post_id', controller.UpdatePost)
+Router.delete('/:id', controller.DeletePost)
 module.exports = Router

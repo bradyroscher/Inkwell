@@ -37,7 +37,7 @@ const HomePage = (props) => {
     <div>
       <div
         style={{
-          marginTop: '5vh',
+          marginTop: '10vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'
@@ -65,10 +65,28 @@ const HomePage = (props) => {
           Filter
         </div>
       </div>
-      <div>
-        {postState.posts.map((post, index) => (
-          <PostCard key={index} image={post.image} text={post.text} />
-        ))}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
+        {postState.posts.map((post, index) =>
+          post.Artist ? (
+            <PostCard
+              key={index}
+              index={index}
+              text={post.text}
+              image={post.image}
+              style={post.style}
+              id={post.id}
+              postID={post.artist_id}
+              postedBy={post.postedBy}
+              profilePic={post.Artist.image}
+            />
+          ) : null
+        )}
       </div>
     </div>
   )

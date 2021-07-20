@@ -4,7 +4,8 @@ const {
   SET_POST_IMAGE,
   SET_POST_DEFAULT,
   SET_POSTS,
-  SET_POST_TYPE
+  SET_POST_TYPE,
+  REMOVE_POST
 } = require('../types')
 
 export const SetPostText = (text) => ({
@@ -58,3 +59,8 @@ export const SetPostsByStyle = (style) => {
     }
   }
 }
+
+export const RemovePost = (index) => ({
+  type: REMOVE_POST,
+  payload: index
+})

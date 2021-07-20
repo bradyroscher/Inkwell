@@ -31,7 +31,7 @@ const NavBar = (props) => {
       }}
       className="navbar"
     >
-      <div>
+      <div style={{ display: 'flex', width: '33%' }}>
         <div
           style={{
             display: `${
@@ -63,8 +63,9 @@ const NavBar = (props) => {
           </NavLink>
         </div>
       </div>
+
       <NavLink
-        to="home"
+        to="/home"
         className="INKWELL"
         style={{
           fontFamily: "'New Rocker', cursive",
@@ -74,7 +75,11 @@ const NavBar = (props) => {
       >
         INKWELL
       </NavLink>
-      <div onClick={logOut} className="log-out">
+      <div
+        onClick={logOut}
+        className="log-out"
+        style={{ width: '33%', display: 'flex', justifyContent: 'flex-end' }}
+      >
         Log Out
       </div>
     </header>

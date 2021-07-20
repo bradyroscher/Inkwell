@@ -14,7 +14,7 @@ const ReviewCard = (props) => {
         rating: rating,
         text: text
       },
-      props.id
+      parseInt(props.id)
     )
   }
 

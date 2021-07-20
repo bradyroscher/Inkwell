@@ -6,7 +6,8 @@ const {
   SET_REVIEWS,
   SET_POSTS,
   SET_AUTHENTICATED,
-  SET_HOME_TYPE
+  SET_HOME_TYPE,
+  SET_ARTIST_ID
 } = require('../types')
 
 export const SetSelectedArtist = (id) => {
@@ -30,6 +31,11 @@ export const SetSelectedArtist = (id) => {
     }
   }
 }
+
+export const SetArtistId = (id) => ({
+  type: SET_ARTIST_ID,
+  payload: id
+})
 
 export const SetHomeType = (value) => ({
   type: SET_HOME_TYPE,

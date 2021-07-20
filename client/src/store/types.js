@@ -24,6 +24,7 @@ export const SET_POST_TYPE = 'SET_POST_TYPE'
 export const SET_POST_DEFAULT = 'SET_POST_DEFAULT'
 export const SET_POSTS = 'SET_POSTS'
 export const ADD_SHOP = 'ADD_SHOP'
+export const REMOVE_POST = 'REMOVE_POST'
 
 //Shops
 export const SET_SHOP_ARTISTS = 'SET_SHOP_ARTIST'
@@ -40,6 +41,7 @@ export const SET_SELECTED_ARTIST = 'SET_SELECTED_ARTIST'
 export const SET_ARTIST_REVIEWS = 'SET_ARTIST_REVIEWS'
 export const SET_USER_DATA = 'SET_USER_DATA'
 export const SET_HOME_TYPE = 'SET_HOME_TYPE'
+export const SET_ARTIST_ID = 'SET_ARTIST_ID'
 
 //Auth
 export const SET_USER_EMAIL = 'SET_USER_EMAIL'

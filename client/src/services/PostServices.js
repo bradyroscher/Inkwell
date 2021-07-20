@@ -26,3 +26,20 @@ export const SubmitPost = async (obj) => {
     console.log(error)
   }
 }
+
+export const EditPost = async (obj, id) => {
+  try {
+    const res = await Client.put(`/post/${id}`, obj)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const DeletePost = async (id) => {
+  try {
+    await Client.delete(`/post/${id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}

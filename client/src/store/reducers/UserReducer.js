@@ -1,14 +1,15 @@
 const {
   SET_SELECTED_ARTIST,
   SET_USER_DATA,
-  SET_HOME_TYPE
+  SET_HOME_TYPE,
+  SET_ARTIST_ID
 } = require('../types')
 
 const iState = {
   selectedArtist: {},
   userData: {},
-  posts: [],
-  homeStyle: ''
+  homeStyle: '',
+  artistID: ''
 }
 
 const UserReducer = (state = iState, action) => {
@@ -19,6 +20,8 @@ const UserReducer = (state = iState, action) => {
       return { ...state, userData: action.payload }
     case SET_HOME_TYPE:
       return { ...state, userStyle: action.payload }
+    case SET_ARTIST_ID:
+      return { ...state, artistID: action.payload }
     default:
       return { ...state }
   }

@@ -96,7 +96,11 @@ const ArtistRegisterPage = (props) => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        marginTop: '100px'
+      }}
+    >
       <div>Image</div>
       <form onSubmit={handleSubmit}>
         <input

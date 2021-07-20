@@ -162,13 +162,13 @@ input:checked + .slider:before {
   border-radius: 10px;
   background-color: #ff3131;
   transition: 0.5s;
-  border: 1px solid white;
+  border: 1px solid #7b7f6f;
 }
 
 .filter-button:hover {
   cursor: pointer;
   border-radius: 20px;
-  border: 1px solid white;
+  border: 1px solid 7b7f6f;
 }
 
 /* ARTIST PAGE */
@@ -178,6 +178,25 @@ input:checked + .slider:before {
   box-shadow: 5px 2px 2px black;
   background-color: #292929;
 }
+
+.post-card-div {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
+
+.post-card-header {
+  border-bottom: #7b7f6f;
+  border-right: #7b7f6f;
+  border-bottom-right-radius: 15px;
+}
+
+.card-style {
+  font-size: 20px;
+  border-radius: 15px;
+}
+
 /* STYLE GRID  */
 .style-grid {
   display: grid;
