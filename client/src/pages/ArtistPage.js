@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import ArtistPageHeader from '../components/ArtistPageHeader'
 import ReviewCard from '../components/ReviewCard'
 import PostCardArtistPage from '../components/PostCardArtistPage'
 import { SetArtistId, SetSelectedArtist } from '../store/actions/UserActions'
@@ -125,126 +126,25 @@ const ArtistPage = (props) => {
         alignItems: 'center'
       }}
     >
-      <div style={{ display: 'flex', width: '100%', marginTop: '75px' }}>
-        <div style={{ width: '50%' }}>
-          <img
-            style={{ width: '80%' }}
-            src={userState.selectedArtist.user.Artist.image}
-          />
-        </div>
-        <div style={{ width: '50%' }}>
-          <div style={{ fontSize: '80px' }}>
-            {userState.selectedArtist.user.name}
-          </div>
-          <div>Average Rating: {reviewState.average}</div>
-          <div className="style-grid">
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist
-                  .americanTraditional
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              American Traditional
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.neoTraditional
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Neo Traditional
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.geometric
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Geometric
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.biomechanical
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Biomechanical
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.waterColor
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Water Color
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.tribal
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Tribal
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.photoRealism
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Photo Realism
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.japanese
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Japanese
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.portrait
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Portrait
-            </div>
-            <div
-              className="style"
-              style={{
-                display: userState.selectedArtist.user.Artist.lettering
-                  ? 'flex'
-                  : 'none'
-              }}
-            >
-              Lettering
-            </div>
-          </div>
-          <div>Bio:</div>
-          <div style={{ textAlign: 'left' }}>
-            {userState.selectedArtist.user.Artist.bio}
-          </div>
-        </div>
+      <div style={{ width: '75vw', display: 'flex', justifyContent: 'center' }}>
+        <ArtistPageHeader
+          image={userState.selectedArtist.user.Artist.image}
+          name={userState.selectedArtist.user.name}
+          average={reviewState.average}
+          bio={userState.selectedArtist.user.Artist.bio}
+          americanTraditional={
+            userState.selectedArtist.user.Artist.americanTraditional
+          }
+          neoTraditional={userState.selectedArtist.user.Artist.neoTraditional}
+          geometric={userState.selectedArtist.user.Artist.geometric}
+          biomechanical={userState.selectedArtist.user.Artist.biomechanical}
+          waterColor={userState.selectedArtist.user.Artist.waterColor}
+          tribal={userState.selectedArtist.user.Artist.tribal}
+          photoRealism={userState.selectedArtist.user.Artist.photoRealism}
+          japanese={userState.selectedArtist.user.Artist.japanese}
+          portrait={userState.selectedArtist.user.Artist.portrait}
+          lettering={userState.selectedArtist.user.Artist.lettering}
+        />
       </div>
       {/*  ###### POST FEATURE RENDER ######  */}
 
@@ -255,30 +155,76 @@ const ArtistPage = (props) => {
               ? 'flex'
               : 'none'
         }}
+        className="post-form-div"
       >
-        <form onSubmit={handlePostSubmit}>
-          <input
-            value={postState.image}
-            onChange={(e) => props.handlePostImage(e.target.value)}
-          />
-          <textarea
-            value={postState.text}
-            onChange={(e) => props.handlePostText(e.target.value)}
-          />
-          <select onChange={(e) => props.handleType(e.target.value)}>
-            <option value={'americanTraditional'}>American Traditional</option>
-            <option value={'neoTraditional'}>Neo Traditional</option>
-            <option value={'tribal'}>Tribal</option>
-            <option value={'japanese'}> Japanese</option>
-            <option value={'photoRealism'}>Photo Realism</option>
-            <option value={'portrait'}>Portrait</option>
-            <option value={'geometric'}>Geometric</option>
-            <option value={'waterColor'}>Water Color</option>
-            <option value={'biomechanical'}>Biomechanical</option>
-            <option value={'lettering'}>Lettering</option>
-            <option value={'other'}>Other</option>
-          </select>
-          <button>Submit</button>
+        <form
+          style={{ display: 'flex', flexDirection: 'column', width: '55vw' }}
+          onSubmit={handlePostSubmit}
+        >
+          <div>Submit a Post</div>
+          <div style={{ display: 'flex' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '50%',
+                margin: '15px'
+              }}
+            >
+              <div>Image Link</div>
+              <input
+                className="input"
+                style={{ backgroundColor: '#292929' }}
+                value={postState.image}
+                onChange={(e) => props.handlePostImage(e.target.value)}
+              />
+              <div style={{ marginTop: '10px' }}>Select Tattoo</div>
+              <select onChange={(e) => props.handleType(e.target.value)}>
+                <option value={'americanTraditional'}>
+                  American Traditional
+                </option>
+                <option value={'neoTraditional'}>Neo Traditional</option>
+                <option value={'tribal'}>Tribal</option>
+                <option value={'japanese'}> Japanese</option>
+                <option value={'photoRealism'}>Photo Realism</option>
+                <option value={'portrait'}>Portrait</option>
+                <option value={'geometric'}>Geometric</option>
+                <option value={'waterColor'}>Water Color</option>
+                <option value={'biomechanical'}>Biomechanical</option>
+                <option value={'lettering'}>Lettering</option>
+                <option value={'other'}>Other</option>
+              </select>
+            </div>
+            <div
+              style={{
+                width: '50%',
+                margin: '15px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div>About</div>
+              <textarea
+                style={{ height: '70%', backgroundColor: '#292929' }}
+                className="input"
+                value={postState.text}
+                onChange={(e) => props.handlePostText(e.target.value)}
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '15px'
+              }}
+            >
+              <div className="filter-button" onClick={handleReviewSubmit}>
+                Submit
+              </div>
+            </div>
+          </div>
         </form>
       </div>
 
@@ -293,6 +239,7 @@ const ArtistPage = (props) => {
           style={post.style}
           id={post.id}
           postID={post.artist_id}
+          userID={userState.userData.id}
           profilePic={userState.selectedArtist.user.Artist.image}
           remove={props.deletePost}
         />

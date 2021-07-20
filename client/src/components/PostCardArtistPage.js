@@ -86,7 +86,7 @@ const PostCardArtistPage = (props) => {
             <span
               onClick={() => setEditing(true)}
               style={{
-                // display: props.userID === props.postID ? 'inline-block' : 'none',
+                display: props.userID === props.postID ? 'flex' : 'none',
                 fontSize: '40px',
                 cursor: 'pointer',
                 marginBottom: '-20px',

@@ -172,7 +172,22 @@ input:checked + .slider:before {
 }
 
 /* ARTIST PAGE */
+.artist-page-header {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
+
 .review-div {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
+
+.post-form-div {
+  margin-top: 25px;
   border: 1px solid #7b7f6f;
   border-radius: 15px;
   box-shadow: 5px 2px 2px black;
@@ -206,7 +221,7 @@ input:checked + .slider:before {
 .style {
   font-size: 15px;
   margin: 15px;
-  background-color: #ff3131;
+  background-color: #778899;
   border-radius: 15px;
   padding: 10px;
   display: flex;
