@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-app.get('/', (req, res) => res.json({ message: 'Server Works' }))
+// app.get('/', (req, res) => res.json({ message: 'Server Works' }))
 app.use('/api', AppRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
