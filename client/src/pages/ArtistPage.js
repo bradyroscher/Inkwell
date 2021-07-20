@@ -9,12 +9,13 @@ import {
   SetReviewText,
   SetAverage,
   SetRating,
-  DeleteReview
+  DeleteReview,
+  AddReview
 } from '../store/actions/ReviewActions'
 import {
   SetPostImage,
   SetPostText,
-  AddPostToPosts,
+  AddPost,
   SetPostType,
   RemovePost
 } from '../store/actions/PostActions'
@@ -29,10 +30,10 @@ const mapDispatchToProps = (dispatch) => {
     getProfile: (id) => dispatch(SetSelectedArtist(id)),
     handleReviewText: (text) => dispatch(SetReviewText(text)),
     handleRating: (num) => dispatch(SetRating(num)),
-    addReview: (array) => dispatch(SetReviews(array)),
+    addReview: (array) => dispatch(AddReview(array)),
     handlePostText: (text) => dispatch(SetPostText(text)),
     handlePostImage: (link) => dispatch(SetPostImage(link)),
-    addPost: (array) => dispatch(AddPostToPosts(array)),
+    addPost: (obj) => dispatch(AddPost(obj)),
     setAverage: (num) => dispatch(SetAverage(num)),
     handleType: (value) => dispatch(SetPostType(value)),
     deleteReview: (index) => dispatch(DeleteReview(index)),
@@ -51,43 +52,25 @@ const ArtistPage = (props) => {
 
   const handleReviewSubmit = (e) => {
     e.preventDefault()
-    PostReview({
+    props.addReview({
       rating: reviewState.reviewRating,
       text: reviewState.text,
       postedBy: userState.userData.name,
       user_id: userState.userData.id,
       artist_id: userState.selectedArtist.user.Artist.id
     })
-    props.addReview([
-      ...reviewState.reviews,
-      {
-        rating: reviewState.reviewRating,
-        text: reviewState.text,
-        postedBy: userState.userData.name,
-        user_id: userState.userData.id,
-        artist_id: userState.selectedArtist.user.Artist.id
-      }
-    ])
+    // props.addReview(res)
   }
 
   const handlePostSubmit = (e) => {
     e.preventDefault()
-    SubmitPost({
+    props.addPost({
       image: postState.image,
       text: postState.text,
-      postedBy: userState.userData.name,
       style: postState.type,
+      postedBy: userState.userData.name,
       artist_id: userState.selectedArtist.user.Artist.id
     })
-    props.addPost([
-      ...postState.posts,
-      {
-        image: postState.image,
-        text: postState.text,
-        postedBy: userState.userData.name,
-        artist_id: userState.selectedArtist.user.Artist.id
-      }
-    ])
   }
 
   console.log(userState, reviewState, postState)
@@ -220,7 +203,7 @@ const ArtistPage = (props) => {
                 margin: '15px'
               }}
             >
-              <div className="filter-button" onClick={handleReviewSubmit}>
+              <div className="filter-button" onClick={handlePostSubmit}>
                 Submit
               </div>
             </div>
@@ -229,21 +212,27 @@ const ArtistPage = (props) => {
       </div>
 
       {/* ######### POST MAP ###### */}
-
-      {postState.posts.map((post, index) => (
-        <PostCardArtistPage
-          key={index}
-          index={index}
-          text={post.text}
-          image={post.image}
-          style={post.style}
-          id={post.id}
-          postID={post.artist_id}
-          userID={userState.userData.id}
-          profilePic={userState.selectedArtist.user.Artist.image}
-          remove={props.deletePost}
-        />
-      ))}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column-reverse'
+        }}
+      >
+        {postState.posts.map((post, index) => (
+          <PostCardArtistPage
+            key={index}
+            index={index}
+            text={post.text}
+            image={post.image}
+            style={post.style}
+            id={post.id}
+            postID={post.artist_id}
+            userID={userState.userData.id}
+            profilePic={userState.selectedArtist.user.Artist.image}
+            remove={props.deletePost}
+          />
+        ))}
+      </div>
 
       {/* ####### REVIEW FORM ######### */}
       <div
@@ -357,7 +346,7 @@ const ArtistPage = (props) => {
         <div>{reviewState.reviews.length} Reviews</div>
         <div
           style={{
-            width: '65vw',
+            width: '70vw',
             display: 'flex',
             flexDirection: 'column-reverse',
             textAlign: 'left'

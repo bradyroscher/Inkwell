@@ -3,7 +3,8 @@ import {
   SET_REVIEWS,
   SET_REVIEW_AVERAGE,
   SET_REVIEW_RATING,
-  REMOVE_REVIEW
+  REMOVE_REVIEW,
+  ADD_REVIEW
 } from '../types'
 
 const iState = {
@@ -19,6 +20,8 @@ const ReviewReducer = (state = iState, action) => {
       return { ...state, text: action.payload }
     case SET_REVIEWS:
       return { ...state, reviews: action.payload }
+    case ADD_REVIEW:
+      return { ...state, reviews: [...state.reviews, action.payload] }
     case SET_REVIEW_AVERAGE:
       return { ...state, average: action.payload }
     case SET_REVIEW_RATING:

@@ -34,9 +34,8 @@ const NavBar = (props) => {
       <div style={{ display: 'flex', width: '33%' }}>
         <div
           style={{
-            display: `${
-              userState.userData.userType === 'user' ? 'flex' : 'none'
-            }`
+            display: userState.userData.userType === 'user' ? 'flex' : 'none',
+            alignItems: 'center'
           }}
         >
           <NavLink to={`/artist-register`} className="profile-nav">
@@ -45,9 +44,8 @@ const NavBar = (props) => {
         </div>
         <div
           style={{
-            display: `${
-              userState.userData.userType === 'artist' ? 'flex' : 'none'
-            }`
+            display: userState.userData.userType === 'artist' ? 'flex' : 'none',
+            alignItems: 'center'
           }}
         >
           <NavLink
@@ -57,7 +55,9 @@ const NavBar = (props) => {
             PROFILE
           </NavLink>
         </div>
-        <div>
+        <div
+          style={{ display: 'flex', alignItems: 'center', marginLeft: '-3vw' }}
+        >
           <NavLink to="/shops" className="profile-nav">
             SHOPS
           </NavLink>
@@ -80,7 +80,7 @@ const NavBar = (props) => {
         className="log-out"
         style={{ width: '33%', display: 'flex', justifyContent: 'flex-end' }}
       >
-        Log Out
+        LOG OUT
       </div>
     </header>
   )

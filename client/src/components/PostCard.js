@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 const PostCard = (props) => {
   const history = useHistory()
   return (
-    <div className="post-card-div" style={{ width: '55vw', marginTop: '50px' }}>
+    <div className="post-card-div" style={{ width: '65vw', marginTop: '50px' }}>
       <div
         style={{
           display: 'flex',

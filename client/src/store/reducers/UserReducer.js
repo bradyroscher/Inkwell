@@ -8,7 +8,7 @@ const {
 const iState = {
   selectedArtist: {},
   userData: {},
-  homeStyle: '',
+  homeStyle: 'All',
   artistID: ''
 }
 
@@ -19,7 +19,7 @@ const UserReducer = (state = iState, action) => {
     case SET_USER_DATA:
       return { ...state, userData: action.payload }
     case SET_HOME_TYPE:
-      return { ...state, userStyle: action.payload }
+      return { ...state, homeStyle: action.payload }
     case SET_ARTIST_ID:
       return { ...state, artistID: action.payload }
     default:

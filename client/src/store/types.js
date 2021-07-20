@@ -25,6 +25,7 @@ export const SET_POST_DEFAULT = 'SET_POST_DEFAULT'
 export const SET_POSTS = 'SET_POSTS'
 export const ADD_SHOP = 'ADD_SHOP'
 export const REMOVE_POST = 'REMOVE_POST'
+export const ADD_POST = 'ADD_POST'
 
 //Shops
 export const SET_SHOP_ARTISTS = 'SET_SHOP_ARTIST'
@@ -59,3 +60,4 @@ export const SET_REVIEWS = 'SET_REVIEWS'
 export const SET_REVIEW_AVERAGE = 'SET_REVIEW_AVERAGE'
 export const SET_REVIEW_RATING = 'SET_REVIEW_RATING'
 export const REMOVE_REVIEW = 'REMOVE_REVIEW'
+export const ADD_REVIEW = 'ADD_REVIEW'

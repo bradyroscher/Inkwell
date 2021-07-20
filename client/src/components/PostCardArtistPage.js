@@ -7,6 +7,8 @@ const PostCardArtistPage = (props) => {
   const [style, setStyle] = useState(props.style)
   const [text, setText] = useState(props.text)
 
+  console.log(style)
+
   const handleSubmit = () => {
     setEditing(false)
     EditPost(
@@ -26,7 +28,7 @@ const PostCardArtistPage = (props) => {
   }
 
   return !editing ? (
-    <div className="post-card-div" style={{ width: '55vw', marginTop: '50px' }}>
+    <div className="post-card-div" style={{ width: '65vw', marginTop: '50px' }}>
       <div
         style={{
           display: 'flex',
@@ -73,7 +75,7 @@ const PostCardArtistPage = (props) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '20px'
+                  padding: '15px'
                 }}
               >
                 {style}
@@ -106,7 +108,7 @@ const PostCardArtistPage = (props) => {
     <div>
       <div
         className="post-card-div"
-        style={{ width: '55vw', marginTop: '50px' }}
+        style={{ width: '65vw', marginTop: '50px' }}
       >
         <div
           style={{

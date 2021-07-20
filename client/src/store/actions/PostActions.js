@@ -1,11 +1,16 @@
-import { GetPosts, GetPostsByStyle } from '../../services/PostServices'
+import {
+  GetPosts,
+  GetPostsByStyle,
+  SubmitPost
+} from '../../services/PostServices'
 const {
   SET_POST_TEXT,
   SET_POST_IMAGE,
   SET_POST_DEFAULT,
   SET_POSTS,
   SET_POST_TYPE,
-  REMOVE_POST
+  REMOVE_POST,
+  ADD_POST
 } = require('../types')
 
 export const SetPostText = (text) => ({
@@ -26,6 +31,20 @@ export const SetPostType = (value) => ({
 export const SetPostDefault = () => ({
   type: SET_POST_DEFAULT
 })
+
+export const AddPost = (obj) => {
+  return async (dispatch) => {
+    try {
+      const post = await SubmitPost(obj)
+      dispatch({
+        type: ADD_POST,
+        payload: post
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 export const AddPostToPosts = (array) => ({
   type: SET_POSTS,

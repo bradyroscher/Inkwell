@@ -19,14 +19,14 @@ const HomePage = (props) => {
   const { userState, postState } = props
 
   const handleClick = () => {
-    if (useState.userStyle === '') {
+    if (userState.homeStyle === 'All') {
       props.getPosts()
     } else {
-      props.getPostsByStyle(userState.userStyle)
+      props.getPostsByStyle(userState.homeStyle)
     }
   }
 
-  console.log(userState, userState.userStyle)
+  console.log(userState, userState.homeStyle)
   console.log(postState)
 
   useEffect(() => {
@@ -45,21 +45,21 @@ const HomePage = (props) => {
       >
         <select
           onChange={(e) => props.handleType(e.target.value)}
-          value={userState.userStyle}
-          className="home-select"
+          value={userState.homeStyle}
+          className="select"
         >
-          <option value="">All</option>
-          <option value={'americanTraditional'}>American Traditional</option>
-          <option value={'neoTraditional'}>Neo Traditional</option>
-          <option value={'tribal'}>Tribal</option>
-          <option value={'japanese'}> Japanese</option>
-          <option value={'photoRealism'}>Photo Realism</option>
-          <option value={'portrait'}>Portrait</option>
-          <option value={'geometric'}>Geometric</option>
-          <option value={'waterColor'}>Water Color</option>
-          <option value={'biomechanical'}>Biomechanical</option>
-          <option value={'lettering'}>Lettering</option>
-          <option value={'other'}>Other</option>
+          <option value="All">All</option>
+          <option value="americanTraditional">American Traditional</option>
+          <option value="neoTraditional">Neo Traditional</option>
+          <option value="tribal">Tribal</option>
+          <option value="japanese"> Japanese</option>
+          <option value="photoRealism">Photo Realism</option>
+          <option value="portrait">Portrait</option>
+          <option value="geometric">Geometric</option>
+          <option value="waterColor">Water Color</option>
+          <option value="biomechanical">Biomechanical</option>
+          <option value="lettering">Lettering</option>
+          <option value="other">Other</option>
         </select>
         <div className="filter-button" onClick={handleClick}>
           Filter
@@ -73,9 +73,8 @@ const HomePage = (props) => {
           justifyContent: 'center'
         }}
       >
-        {
-          postState.posts.map((post, index) => (
-            // post.Artist ? (
+        {postState.posts.map((post, index) =>
+          post.Artist ? (
             <PostCard
               key={index}
               index={index}
@@ -87,11 +86,8 @@ const HomePage = (props) => {
               postedBy={post.postedBy}
               profilePic={post.Artist.image}
             />
-          ))
-          // : null
-
-          // )
-        }
+          ) : null
+        )}
       </div>
     </div>
   )
