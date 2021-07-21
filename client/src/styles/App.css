@@ -239,7 +239,14 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-/* SHOP LIST PAGE */
+/* SHOP LIST PAGE / SHOP PAGE */
+
+.shop-header {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
 .shop-card {
   border: 1px solid #7b7f6f;
   border-radius: 15px;
@@ -307,4 +314,13 @@ input:checked + .slider:before {
   flex-direction: column;
   align-items: center;
   width: 45vw;
+}
+
+/* LOG IN | REGISTER */
+
+.log-in-div {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
 }

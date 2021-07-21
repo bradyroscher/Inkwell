@@ -22,9 +22,27 @@ const ShopPage = (props) => {
   if (shopState.selectedShop.name) {
     return (
       <div>
-        <img src={shopState.selectedShop.image} />
-        <h1>{shopState.selectedShop.name}</h1>
-        <div>{shopState.selectedShop.address}</div>
+        <div style={{ width: '50vw', display: 'flex' }}>
+          <img
+            style={{
+              width: '35%',
+              borderTopLeftRadius: '15px',
+              borderBottomRightRadius: '15px'
+            }}
+            src={shopState.selectedShop.image}
+          />
+          <div
+            stlyle={{
+              width: '65%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}
+          >
+            <h1>{shopState.selectedShop.name}</h1>
+            <div>{shopState.selectedShop.address}</div>
+          </div>
+        </div>
         <div
           style={{
             display: 'flex',

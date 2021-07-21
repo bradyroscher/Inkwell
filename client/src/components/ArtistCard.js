@@ -46,8 +46,9 @@ const ArtistCard = (props) => {
         <div style={{ fontSize: '25px' }}>{props.name}</div>
         <div style={{ display: props.reviews.length ? 'flex' : 'none' }}>
           Average Rating: {average}
+          <span style={{ color: '#ff3131' }}>&#10039;</span>
         </div>
-        <div>{props.reviews.length} Reviews</div>
+        <div>{props.reviews.length} Review(s)</div>
       </div>
     </div>
   )
