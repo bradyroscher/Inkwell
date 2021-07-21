@@ -332,7 +332,7 @@ const ArtistPage = (props) => {
                 </span>
               </div>
               <div
-                class="filter-button"
+                className="filter-button"
                 style={{ height: '20px' }}
                 onClick={handleReviewSubmit}
               >

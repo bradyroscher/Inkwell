@@ -73,21 +73,23 @@ const HomePage = (props) => {
           justifyContent: 'center'
         }}
       >
-        {postState.posts.map((post, index) =>
-          post.Artist ? (
-            <PostCard
-              key={index}
-              index={index}
-              text={post.text}
-              image={post.image}
-              style={post.style}
-              id={post.id}
-              postID={post.artist_id}
-              postedBy={post.postedBy}
-              profilePic={post.Artist.image}
-            />
-          ) : null
-        )}
+        {postState.posts.length
+          ? postState.posts.map((post, index) =>
+              post.Artist ? (
+                <PostCard
+                  key={index}
+                  index={index}
+                  text={post.text}
+                  image={post.image}
+                  style={post.style}
+                  id={post.id}
+                  postID={post.artist_id}
+                  postedBy={post.postedBy}
+                  profilePic={post.Artist.image}
+                />
+              ) : null
+            )
+          : null}
       </div>
     </div>
   )
