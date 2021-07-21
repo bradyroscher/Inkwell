@@ -7,8 +7,14 @@ const {
   SET_POSTS,
   SET_AUTHENTICATED,
   SET_HOME_TYPE,
-  SET_ARTIST_ID
+  SET_ARTIST_ID,
+  TOGGLE_USER_TYPE
 } = require('../types')
+
+export const ToggleUserType = (type) => ({
+  type: TOGGLE_USER_TYPE,
+  payload: type
+})
 
 export const SetSelectedArtist = (id) => {
   return async (dispatch) => {

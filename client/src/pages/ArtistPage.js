@@ -266,7 +266,10 @@ const ArtistPage = (props) => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
+              marginLeft: '30px',
+              marginBottom: '30px',
+              marginRight: '30px'
             }}
           >
             <div style={{ marginBottom: '10px' }}>Leave a review!</div>

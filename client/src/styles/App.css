@@ -325,3 +325,11 @@ input:checked + .slider:before {
   box-shadow: 5px 2px 2px black;
   background-color: #292929;
 }
+
+.artist-map-header {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+  padding: 15px;
+}

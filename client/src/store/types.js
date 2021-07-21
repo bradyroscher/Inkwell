@@ -43,6 +43,7 @@ export const SET_ARTIST_REVIEWS = 'SET_ARTIST_REVIEWS'
 export const SET_USER_DATA = 'SET_USER_DATA'
 export const SET_HOME_TYPE = 'SET_HOME_TYPE'
 export const SET_ARTIST_ID = 'SET_ARTIST_ID'
+export const TOGGLE_USER_TYPE = 'TOGGLE_USER_TYPE'
 
 //Auth
 export const SET_USER_EMAIL = 'SET_USER_EMAIL'

@@ -68,7 +68,9 @@ const PostCard = (props) => {
                 display: 'flex',
                 borderRight: '1px solid #7b7f6f',
                 borderBottom: '1px solid #7b7f6f',
-                width: '100%'
+                width: '100%',
+                marginTop: '-20px',
+                alignItems: 'center'
               }}
             >
               <img
@@ -76,7 +78,7 @@ const PostCard = (props) => {
                 style={{ width: '60px', height: '60px', borderRadius: '60px' }}
               />
               <div
-                className="card-style"
+                className="style"
                 style={{
                   display: 'flex',
                   alignItems: 'center',

@@ -28,7 +28,7 @@ const ShopPage = (props) => {
           marginTop: '10vh'
         }}
       >
-        <div className="shop-header" style={{ width: '50vw', display: 'flex' }}>
+        <div className="shop-header" style={{ width: '55vw', display: 'flex' }}>
           <img
             style={{
               width: '35%',
@@ -54,11 +54,17 @@ const ShopPage = (props) => {
           </div>
         </div>
         <div
+          className="artist-map-header"
+          style={{ fontSize: '40px', margin: '4vh' }}
+        >
+          {' '}
+          Shop Artists{' '}
+        </div>
+        <div
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            marginTop: '4vh'
+            alignItems: 'center'
           }}
         >
           {shopState.selectedShop.Artists.map((artist, index) => (

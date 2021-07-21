@@ -89,7 +89,9 @@ const PostCardArtistPage = (props) => {
                 display: 'flex',
                 borderRight: '1px solid #7b7f6f',
                 borderBottom: '1px solid #7b7f6f',
-                width: '100%'
+                width: '100%',
+                alignItems: 'center',
+                marginTop: '-20px'
               }}
             >
               <img
@@ -97,7 +99,7 @@ const PostCardArtistPage = (props) => {
                 style={{ width: '60px', height: '60px', borderRadius: '60px' }}
               />
               <div
-                className="card-style"
+                className="style"
                 style={{
                   display: 'flex',
                   alignItems: 'center',

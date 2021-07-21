@@ -21,6 +21,7 @@ import {
   SetArtistImage,
   SetArtistLettering
 } from '../store/actions/ArtistSignUpActions'
+import { ToggleUserType } from '../store/actions/UserActions'
 import { SetShopID } from '../store/actions/ArtistSignUpActions'
 import { RegisterArtist } from '../services/UserServices'
 
@@ -46,7 +47,8 @@ const mapDispatchToProps = (dispatch) => {
     handleLettering: (value) => dispatch(SetArtistLettering(value)),
     handleOther: (value) => dispatch(SetArtistOther(value)),
     handleImage: (link) => dispatch(SetArtistImage(link)),
-    handleBio: (text) => dispatch(SetArtistBio(text))
+    handleBio: (text) => dispatch(SetArtistBio(text)),
+    toggleType: (type) => dispatch(ToggleUserType(type))
   }
 }
 
@@ -61,6 +63,7 @@ const ArtistRegisterPage = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    props.toggleType('artist')
     RegisterArtist(
       {
         image: props.artistSignUpState.image,
@@ -81,6 +84,7 @@ const ArtistRegisterPage = (props) => {
       },
       parseInt(props.userState.userData.id)
     )
+
     props.history.push(`/home`)
   }
 
@@ -133,6 +137,7 @@ const ArtistRegisterPage = (props) => {
           <div
             style={{ display: 'flex', alignItems: 'center' }}
             className="filter-button"
+            onClick={handleSearchSubmit}
           >
             search
           </div>
@@ -218,11 +223,12 @@ const ArtistRegisterPage = (props) => {
         >
           Back
         </button>
-        <div style={{ margin: '15px', fontSize: '20px' }}>
+        <div style={{ margin: '25px', fontSize: '25px', marginBottom: '50px' }}>
           Almost there! Give us some info about you.
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="toggle-grid">
+          <div>Check all the styles you can do.</div>
+          <div className="toggle-grid" style={{ marginBottom: '30px' }}>
             <div>
               <div>American Traditional</div>
               <label className="switch">
@@ -415,7 +421,9 @@ const ArtistRegisterPage = (props) => {
                 value={props.artistSignUpState.image}
                 onChange={(e) => props.handleImage(e.target.value)}
               />
-              <div className="filter-button">Submit</div>
+              <div onClick={handleSubmit} className="filter-button">
+                Submit
+              </div>
             </div>
           </div>
         </form>

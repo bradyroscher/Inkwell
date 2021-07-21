@@ -15,17 +15,23 @@
 ***
 ## Description
 ***
- Inkwell is an app for users to find and connect with tattoo artists. You'll be able to see there work and look at reviews and ratings of artists by other users. Tattoo shops and their locations will be diplayed as well, and viewing the shops page will show all artists associated with them. The final product is for someone hoping to get a tattoo, but doesnt have a relationship with an artist they love. So they'll be able to browse Inkwell and find artists that specialize in a style they like.
-***
-## Getting Started
+ Inkwell is an app for users to find and connect with tattoo artists. You can browse user posts and even filter posts by tattoo style. You can browse shops and search them up by name or address. If you an tattoo artist you can register as one and start making posts and getting reviews from other users!
 ***
 ## Updates
 ***
-
+- [x] Add Syle Filtering
+- [ ] Full CRUD to Shops and Artists
+- [ ] Mapbox for shops
 ***
 ## Screenshots
 ***
-
+![Home Page](/client/src/styles/images/home-page.png)
+![Login Page](/client/src/styles/images/login-page.png)
+![Shop Page](/client/src/styles/images/shop-page.png)
+![Artist Page](/client/src/styles/images/artist-page.png)
 ***
 ## Credits
 ***
+- `LucidChart`: [CHD](https://lucid.app/)
+- `W3Schools`: [Toggle Switch](https://www.w3schools.com/)
+- `Anna Salmi`: [Tattoo Gif](https://www.instagram.com/salmi_anna/)

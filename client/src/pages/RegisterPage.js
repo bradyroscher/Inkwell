@@ -104,7 +104,7 @@ const RegisterPage = (props) => {
             <input
               className="input"
               value={props.authState.password}
-              type="paswword"
+              type="password"
               style={{
                 marginBottom: '15px',
                 width: '75%',

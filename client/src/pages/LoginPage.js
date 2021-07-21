@@ -109,15 +109,15 @@ const LoginPage = (props) => {
               onChange={(e) => props.handlePassword(e.target.value)}
             />
             <div style={{ display: 'flex' }}>
+              <button style={{ color: 'white' }} className="filter-button">
+                Log In
+              </button>
               <button
                 className="filter-button"
                 style={{ color: 'white' }}
                 onClick={() => props.history.push('/register')}
               >
                 Sign Up
-              </button>
-              <button style={{ color: 'white' }} className="filter-button">
-                Log In
               </button>
             </div>
           </form>

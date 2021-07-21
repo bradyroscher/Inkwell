@@ -2,7 +2,8 @@ const {
   SET_SELECTED_ARTIST,
   SET_USER_DATA,
   SET_HOME_TYPE,
-  SET_ARTIST_ID
+  SET_ARTIST_ID,
+  TOGGLE_USER_TYPE
 } = require('../types')
 
 const iState = {
@@ -22,6 +23,11 @@ const UserReducer = (state = iState, action) => {
       return { ...state, homeStyle: action.payload }
     case SET_ARTIST_ID:
       return { ...state, artistID: action.payload }
+    case TOGGLE_USER_TYPE:
+      return {
+        ...state,
+        userData: { ...state.userData, userType: action.payload }
+      }
     default:
       return { ...state }
   }
