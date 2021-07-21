@@ -32,13 +32,13 @@ export const SetPostDefault = () => ({
   type: SET_POST_DEFAULT
 })
 
-export const AddPost = (obj) => {
+export const AddPost = (obj, id) => {
   return async (dispatch) => {
     try {
       const post = await SubmitPost(obj)
       dispatch({
         type: ADD_POST,
-        payload: post
+        payload: { ...post, Artist: { User: { id: id } } }
       })
     } catch (error) {
       console.log(error)

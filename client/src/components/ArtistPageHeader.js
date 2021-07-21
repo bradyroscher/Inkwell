@@ -78,7 +78,7 @@ const ArtistPageHeader = (props) => {
               display: props.photoRealism ? 'flex' : 'none'
             }}
           >
-            Photo Realism
+            Photorealism
           </div>
           <div
             className="style"

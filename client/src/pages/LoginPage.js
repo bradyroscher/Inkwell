@@ -21,8 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const LoginPage = (props) => {
-  console.log(props.authState)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     props.submitLogIn({
@@ -30,8 +28,7 @@ const LoginPage = (props) => {
       password: props.authState.password
     })
     props.setAuthenticated(true)
-    console.log(props.authState.authenicated)
-    console.log('fired')
+
     props.history.push('/home')
   }
 

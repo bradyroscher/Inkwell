@@ -19,8 +19,6 @@ import {
   SetPostType,
   RemovePost
 } from '../store/actions/PostActions'
-import { PostReview } from '../services/ReviewServices'
-import { SubmitPost } from '../services/PostServices'
 
 const mapStateToProps = ({ shopState, postState, userState, reviewState }) => {
   return { shopState, postState, userState, reviewState }
@@ -33,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     addReview: (array) => dispatch(AddReview(array)),
     handlePostText: (text) => dispatch(SetPostText(text)),
     handlePostImage: (link) => dispatch(SetPostImage(link)),
-    addPost: (obj) => dispatch(AddPost(obj)),
+    addPost: (obj, id) => dispatch(AddPost(obj, id)),
     setAverage: (num) => dispatch(SetAverage(num)),
     handleType: (value) => dispatch(SetPostType(value)),
     deleteReview: (index) => dispatch(DeleteReview(index)),
@@ -45,11 +43,6 @@ const mapDispatchToProps = (dispatch) => {
 const ArtistPage = (props) => {
   const { userState, reviewState, postState } = props
 
-  const handleArtistID = () => {
-    if (userState.userData) {
-    }
-  }
-
   const handleReviewSubmit = (e) => {
     e.preventDefault()
     props.addReview({
@@ -59,21 +52,26 @@ const ArtistPage = (props) => {
       user_id: userState.userData.id,
       artist_id: userState.selectedArtist.user.Artist.id
     })
-    // props.addReview(res)
+    props.handleReviewText('')
+    props.handleRating(5)
   }
 
   const handlePostSubmit = (e) => {
     e.preventDefault()
-    props.addPost({
-      image: postState.image,
-      text: postState.text,
-      style: postState.type,
-      postedBy: userState.userData.name,
-      artist_id: userState.selectedArtist.user.Artist.id
-    })
+    props.addPost(
+      {
+        image: postState.image,
+        text: postState.text,
+        style: postState.type,
+        postedBy: userState.userData.name,
+        artist_id: userState.selectedArtist.user.Artist.id
+      },
+      userState.userData.id
+    )
+    props.handlePostImage('')
+    props.handlePostText('')
+    props.handleType('americanTraditional')
   }
-
-  console.log(userState, reviewState, postState)
 
   const getArtist = () => {
     props.getProfile(props.match.params.id)
@@ -81,7 +79,6 @@ const ArtistPage = (props) => {
 
   const getAverage = () => {
     let sum = 0
-    console.log(reviewState.reviews)
     if (!reviewState.reviews.length) {
       props.setAverage('No reviews yet!')
     } else {
@@ -180,7 +177,7 @@ const ArtistPage = (props) => {
                 <option value={'neoTraditional'}>Neo Traditional</option>
                 <option value={'tribal'}>Tribal</option>
                 <option value={'japanese'}> Japanese</option>
-                <option value={'photoRealism'}>Photo Realism</option>
+                <option value={'photoRealism'}>Photorealism</option>
                 <option value={'portrait'}>Portrait</option>
                 <option value={'geometric'}>Geometric</option>
                 <option value={'waterColor'}>Water Color</option>

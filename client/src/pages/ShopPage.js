@@ -18,28 +18,38 @@ const ShopPage = (props) => {
   useEffect(() => {
     props.setShop(props.match.params.id)
   }, [])
-  console.log(shopState)
   if (shopState.selectedShop.name) {
     return (
-      <div>
-        <div style={{ width: '50vw', display: 'flex' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: '10vh'
+        }}
+      >
+        <div className="shop-header" style={{ width: '50vw', display: 'flex' }}>
           <img
             style={{
               width: '35%',
               borderTopLeftRadius: '15px',
-              borderBottomRightRadius: '15px'
+              borderBottomLeftRadius: '15px',
+              marginRight: '20px'
             }}
             src={shopState.selectedShop.image}
           />
           <div
-            stlyle={{
+            style={{
               width: '65%',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              justifyContent: 'center',
+              alignItems: 'flex-start'
             }}
           >
-            <h1>{shopState.selectedShop.name}</h1>
+            <div style={{ fontSize: '45px' }}>
+              {shopState.selectedShop.name}
+            </div>
             <div>{shopState.selectedShop.address}</div>
           </div>
         </div>
@@ -47,7 +57,8 @@ const ShopPage = (props) => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            marginTop: '4vh'
           }}
         >
           {shopState.selectedShop.Artists.map((artist, index) => (

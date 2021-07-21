@@ -40,27 +40,32 @@ const HomePage = (props) => {
           marginTop: '10vh',
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'flex-end'
         }}
       >
-        <select
-          onChange={(e) => props.handleType(e.target.value)}
-          value={userState.homeStyle}
-          className="select"
-        >
-          <option value="All">All</option>
-          <option value="americanTraditional">American Traditional</option>
-          <option value="neoTraditional">Neo Traditional</option>
-          <option value="tribal">Tribal</option>
-          <option value="japanese"> Japanese</option>
-          <option value="photoRealism">Photo Realism</option>
-          <option value="portrait">Portrait</option>
-          <option value="geometric">Geometric</option>
-          <option value="waterColor">Water Color</option>
-          <option value="biomechanical">Biomechanical</option>
-          <option value="lettering">Lettering</option>
-          <option value="other">Other</option>
-        </select>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ color: 'lightgray', paddingBottom: '10px' }}>
+            Filter by style
+          </div>
+          <select
+            onChange={(e) => props.handleType(e.target.value)}
+            value={userState.homeStyle}
+            className="select"
+          >
+            <option value="All">All</option>
+            <option value="americanTraditional">American Traditional</option>
+            <option value="neoTraditional">Neo Traditional</option>
+            <option value="tribal">Tribal</option>
+            <option value="japanese"> Japanese</option>
+            <option value="photoRealism">Photorealism</option>
+            <option value="portrait">Portrait</option>
+            <option value="geometric">Geometric</option>
+            <option value="waterColor">Water Color</option>
+            <option value="biomechanical">Biomechanical</option>
+            <option value="lettering">Lettering</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
         <div className="filter-button" onClick={handleClick}>
           Filter
         </div>

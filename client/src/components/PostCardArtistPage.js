@@ -7,8 +7,6 @@ const PostCardArtistPage = (props) => {
   const [style, setStyle] = useState('')
   const [text, setText] = useState(props.text)
 
-  console.log(style)
-
   const parseStyle = (style) => {
     switch (style) {
       case 'americanTraditional':
@@ -37,8 +35,6 @@ const PostCardArtistPage = (props) => {
   }
 
   useEffect(() => setStyle(parseStyle(props.style)), [])
-
-  console.log(props.userID, props.postID)
 
   const handleSubmit = () => {
     setEditing(false)

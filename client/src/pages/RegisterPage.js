@@ -27,8 +27,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const RegisterPage = (props) => {
-  console.log(props.authState)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Register({

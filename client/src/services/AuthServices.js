@@ -22,7 +22,6 @@ export const Login = async (obj) => {
 export const StripToken = async () => {
   try {
     const payload = await Client.get('/auth/token')
-    console.log(payload)
     return payload.data
   } catch (error) {
     console.log(error)

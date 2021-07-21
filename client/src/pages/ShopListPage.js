@@ -21,11 +21,9 @@ const mapDispatchToProps = (dispatch) => {
 const ShopListPage = (props) => {
   const { setShops } = props
 
-  console.log(props.shopState)
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('click')
+
     props.handleSearch(props.shopState.query)
   }
 
@@ -43,15 +41,30 @@ const ShopListPage = (props) => {
         width: '100vw'
       }}
     >
-      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-        <input
-          className="input"
-          style={{ width: '15vw' }}
-          value={props.shopState.query}
-          onChange={(e) => props.handleQuery(e.target.value)}
-        />
-        <button style={{ color: 'white' }} className="filter-button">
-          search
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          marginBottom: '20px',
+          display: 'flex',
+          alignItems: 'flex-end'
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ color: 'lightgray', paddingBottom: '10px' }}>
+            Search by shop name or address
+          </div>
+          <input
+            className="input"
+            style={{ width: '15vw' }}
+            value={props.shopState.query}
+            onChange={(e) => props.handleQuery(e.target.value)}
+          />
+        </div>
+        <button
+          style={{ color: 'white', height: '45px' }}
+          className="filter-button"
+        >
+          Search
         </button>
       </form>
       <div

@@ -51,10 +51,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const ArtistRegisterPage = (props) => {
-  console.log(props.shopState)
-  console.log(props.artistSignUpState)
-  console.log(props.artistSignUpState.geometric)
-
   const checkBoolean = (state) => {
     if (state === false) {
       return true
@@ -85,12 +81,11 @@ const ArtistRegisterPage = (props) => {
       },
       parseInt(props.userState.userData.id)
     )
-    props.history.push(`/artist/${props.userState.userData.id}`)
+    props.history.push(`/home`)
   }
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    console.log('click')
     props.handleSearch(props.shopState.query)
   }
 

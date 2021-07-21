@@ -33,13 +33,10 @@ const ShopRegisterPage = (props) => {
       image: props.shopState.shopImage,
       createdBy: props.userState.userData.id
     }
-    console.log(obj)
     props.addShop(obj)
     history.goBack()
   }
 
-  console.log(props.shopState)
-  console.log(props.userState.userData.id)
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div className="shop-register-form" style={{ marginTop: '10vh' }}>

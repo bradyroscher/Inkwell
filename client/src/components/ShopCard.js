@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 
 const ShopCard = (props) => {
   const history = useHistory()
-  console.log(props.image)
   return (
     <div
       className="shop-card"

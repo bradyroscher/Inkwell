@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
 const NavBar = (props) => {
   const history = useHistory()
   const { authState, userState } = props
-  console.log(props.userState.userData.id)
   const logOut = () => {
     props.setAuthenticated(false)
     localStorage.clear()

@@ -14,7 +14,6 @@ const ArtistCard = (props) => {
   }
 
   useEffect(() => setAverage(getAverage()), [])
-  console.log(props)
   return (
     <div
       className="artist-card"
