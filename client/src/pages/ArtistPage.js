@@ -144,7 +144,14 @@ const ArtistPage = (props) => {
           style={{ display: 'flex', flexDirection: 'column', width: '55vw' }}
           onSubmit={handlePostSubmit}
         >
-          <div>Submit a Post</div>
+          <div
+            style={{
+              fontSize: '20px',
+              padding: '10px'
+            }}
+          >
+            Submit a Post
+          </div>
           <div style={{ display: 'flex' }}>
             <div
               style={{
@@ -162,7 +169,11 @@ const ArtistPage = (props) => {
                 onChange={(e) => props.handlePostImage(e.target.value)}
               />
               <div style={{ marginTop: '10px' }}>Select Tattoo</div>
-              <select onChange={(e) => props.handleType(e.target.value)}>
+              <select
+                className="select"
+                style={{ backgroundColor: '#292929' }}
+                onChange={(e) => props.handleType(e.target.value)}
+              >
                 <option value={'americanTraditional'}>
                   American Traditional
                 </option>
@@ -226,7 +237,7 @@ const ArtistPage = (props) => {
             image={post.image}
             style={post.style}
             id={post.id}
-            postID={post.artist_id}
+            postID={post.Artist.User.id}
             userID={userState.userData.id}
             profilePic={userState.selectedArtist.user.Artist.image}
             remove={props.deletePost}
@@ -343,11 +354,19 @@ const ArtistPage = (props) => {
         </div>
 
         {/* ##### REVIEW MAP ##### */}
-        <div>{reviewState.reviews.length} Reviews</div>
+        <div
+          style={{
+            fontSize: '25px',
+            padding: '15px',
+            display: reviewState.reviews.length ? 'flex' : 'none'
+          }}
+        >
+          {reviewState.reviews.length} Reviews
+        </div>
         <div
           style={{
             width: '70vw',
-            display: 'flex',
+            display: reviewState.reviews.length ? 'flex' : 'none',
             flexDirection: 'column-reverse',
             textAlign: 'left'
           }}

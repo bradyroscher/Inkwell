@@ -13,12 +13,16 @@ const ArtistPageHeader = (props) => {
             borderBottom: '1px solid #7b7f6f',
             borderBottomRightRadius: '15px',
             borderBottomLeftRadius: '15px',
-            marginBottom: '15px'
+            marginBottom: '15px',
+            padding: '10px'
           }}
         >
           {props.name}
         </div>
-        <div>Average Rating: {props.average}</div>
+        <div style={{ fontSize: '20px' }}>
+          Average Rating: {props.average}
+          <span style={{ color: '#ff3131' }}>&#10039;</span>
+        </div>
         <div className="style-grid">
           <div
             className="style"
@@ -102,7 +106,14 @@ const ArtistPageHeader = (props) => {
           </div>
         </div>
         <div>Bio:</div>
-        <div style={{ textAlign: 'left' }}>{props.bio}</div>
+        <div
+          style={{
+            textAlign: 'left',
+            marginLeft: '60px'
+          }}
+        >
+          {props.bio}
+        </div>
       </div>
 
       <img

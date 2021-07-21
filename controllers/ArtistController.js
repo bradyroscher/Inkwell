@@ -38,7 +38,7 @@ const GetUserWithArtistWithReviews = async (req, res) => {
           model: Artist,
           include: [
             { model: Review, order: ['createdAt', 'ASC'] },
-            { model: Post, order: ['createdAt', 'ASC'] }
+            { model: Post, include: [{ model: Artist, include: User }] }
           ]
         }
       ]

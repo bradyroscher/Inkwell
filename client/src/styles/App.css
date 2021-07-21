@@ -14,10 +14,10 @@ body {
 
 .edit-icon {
   transition: 0.2s;
-  transform: rotateZ(100deg);
+  transform: rotateZ(80deg);
 }
 .edit-icon:hover {
-  transform: rotateZ(80deg);
+  transform: rotateZ(60deg);
 }
 /* INPUT */
 .input {
@@ -180,7 +180,6 @@ input:checked + .slider:before {
 .filter-button:hover {
   cursor: pointer;
   border-radius: 20px;
-  border: 1px solid 7b7f6f;
 }
 
 /* ARTIST PAGE */
@@ -246,6 +245,11 @@ input:checked + .slider:before {
   border-radius: 15px;
   box-shadow: 5px 2px 2px black;
   background-color: #292929;
+  transition: ease-in-out 0.2s;
+}
+
+.shop-card:hover {
+  border: 1px solid white;
 }
 
 .artist-card {
@@ -258,4 +262,49 @@ input:checked + .slider:before {
 
 .artist-card:hover {
   border: 1px solid white;
+}
+
+/* ARTIST REGISTER PAGE  */
+.toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border-left: 1px solid #7b7f6f;
+  border-right: 1px solid #7b7f6f;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.main-form {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+}
+
+.shop-button {
+  margin-left: 15px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: 0.5s;
+  border: 1px solid #7b7f6f;
+}
+
+.shop-register-form {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+  width: 45vw;
+}
+
+.artist-shop-search {
+  border: 1px solid #7b7f6f;
+  border-radius: 15px;
+  box-shadow: 5px 2px 2px black;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45vw;
 }

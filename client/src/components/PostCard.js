@@ -1,7 +1,38 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 const PostCard = (props) => {
+  const [style, setStyle] = useState('')
+
+  const parseStyle = (style) => {
+    switch (style) {
+      case 'americanTraditional':
+        return 'American Tradition'
+      case 'neoTraditional':
+        return 'Neo Traditional'
+      case 'tribal':
+        return 'Tribal'
+      case 'japanese':
+        return 'Japanese'
+      case 'photoRealism':
+        return 'Photorealism'
+      case 'portrait':
+        return 'Portrait'
+      case 'geometric':
+        return 'Geometric'
+      case 'waterColor':
+        return 'Water Color'
+      case 'biomechanical':
+        return 'Biomechanical'
+      case 'lettering':
+        return 'Lettering'
+      case 'other':
+        return 'Other'
+    }
+  }
+
+  useEffect(() => setStyle(parseStyle(props.style)), [])
+
   const history = useHistory()
   return (
     <div className="post-card-div" style={{ width: '65vw', marginTop: '50px' }}>
@@ -53,7 +84,7 @@ const PostCard = (props) => {
                   padding: '20px'
                 }}
               >
-                {props.style}
+                {style}
               </div>
             </div>
             <div

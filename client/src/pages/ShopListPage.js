@@ -43,12 +43,16 @@ const ShopListPage = (props) => {
         width: '100vw'
       }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
         <input
+          className="input"
+          style={{ width: '15vw' }}
           value={props.shopState.query}
           onChange={(e) => props.handleQuery(e.target.value)}
         />
-        <button>search</button>
+        <button style={{ color: 'white' }} className="filter-button">
+          search
+        </button>
       </form>
       <div
         style={{

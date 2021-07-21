@@ -1,13 +1,44 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import { EditPost, DeletePost } from '../services/PostServices'
 
 const PostCardArtistPage = (props) => {
   const [editing, setEditing] = useState(false)
   const [image, setImage] = useState(props.image)
-  const [style, setStyle] = useState(props.style)
+  const [style, setStyle] = useState('')
   const [text, setText] = useState(props.text)
 
   console.log(style)
+
+  const parseStyle = (style) => {
+    switch (style) {
+      case 'americanTraditional':
+        return 'American Tradition'
+      case 'neoTraditional':
+        return 'Neo Traditional'
+      case 'tribal':
+        return 'Tribal'
+      case 'japanese':
+        return 'Japanese'
+      case 'photoRealism':
+        return 'Photorealism'
+      case 'portrait':
+        return 'Portrait'
+      case 'geometric':
+        return 'Geometric'
+      case 'waterColor':
+        return 'Water Color'
+      case 'biomechanical':
+        return 'Biomechanical'
+      case 'lettering':
+        return 'Lettering'
+      case 'other':
+        return 'Other'
+    }
+  }
+
+  useEffect(() => setStyle(parseStyle(props.style)), [])
+
+  console.log(props.userID, props.postID)
 
   const handleSubmit = () => {
     setEditing(false)

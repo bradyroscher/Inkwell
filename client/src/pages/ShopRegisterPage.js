@@ -41,28 +41,69 @@ const ShopRegisterPage = (props) => {
   console.log(props.shopState)
   console.log(props.userState.userData.id)
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={props.shopState.shopName}
-          onChange={(e) => {
-            props.handleName(e.target.value)
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="shop-register-form" style={{ marginTop: '10vh' }}>
+        <form
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
           }}
-        />
-        <input
-          value={props.shopState.shopAddress}
-          onChange={(e) => {
-            props.handleAddress(e.target.value)
-          }}
-        />
-        <input
-          value={props.shopState.shopImage}
-          onChange={(e) => {
-            props.handleImage(e.target.value)
-          }}
-        />
-        <button>SUBMIT</button>
-      </form>
+          onSubmit={handleSubmit}
+        >
+          <div style={{ display: 'flex', margin: '20px' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginRight: '5px'
+              }}
+            >
+              <div>Shop Name</div>
+              <input
+                value={props.shopState.shopName}
+                style={{ width: '15vw' }}
+                onChange={(e) => {
+                  props.handleName(e.target.value)
+                }}
+                className="input"
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginLeft: '5px'
+              }}
+            >
+              <div>Image</div>
+              <input
+                value={props.shopState.shopImage}
+                style={{ width: '15vw' }}
+                onChange={(e) => {
+                  props.handleImage(e.target.value)
+                }}
+                className="input"
+              />
+            </div>
+          </div>
+          <div>Address</div>
+          <input
+            value={props.shopState.shopAddress}
+            style={{ width: '70%' }}
+            onChange={(e) => {
+              props.handleAddress(e.target.value)
+            }}
+            className="input"
+          />
+          <button
+            style={{ color: 'white', margin: '20px' }}
+            className="filter-button"
+          >
+            SUBMIT
+          </button>
+        </form>
+      </div>
     </div>
   )
 }

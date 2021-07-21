@@ -8,9 +8,22 @@ const ShopCard = (props) => {
     <div
       className="shop-card"
       onClick={() => history.push(`/shop-page/${props.id}`)}
-      style={{ display: 'flex', width: '40vw', cursor: 'pointer' }}
+      style={{
+        display: 'flex',
+        width: '45vw',
+        cursor: 'pointer',
+        marginBottom: '30px'
+      }}
     >
-      <img style={{ width: '30%' }} src={props.image} />
+      <img
+        style={{
+          width: '30%',
+          borderBottomLeftRadius: '15px',
+          borderTopLeftRadius: '15px',
+          marginRight: '20px'
+        }}
+        src={props.image}
+      />
       <div
         style={{
           display: 'flex',
@@ -20,7 +33,7 @@ const ShopCard = (props) => {
           justifyContent: 'center'
         }}
       >
-        <div>{props.name}</div>
+        <div style={{ fontSize: '40px' }}>{props.name}</div>
         <div>{props.address}</div>
       </div>
     </div>
