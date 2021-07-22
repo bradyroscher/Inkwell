@@ -1,7 +1,7 @@
 # Inkwell
 ## By Brady Roscher
 ## 7/11/2021
-[GitHub](https://github.com/bradyroscher/Inkwell) | [Trello](https://trello.com/b/Y3hIr5eh/inkwell)
+[GitHub](https://github.com/bradyroscher/Inkwell) | [Trello](https://trello.com/b/Y3hIr5eh/inkwell) | [Deployed Link](https://mysterious-basin-66061.herokuapp.com/)
 ***
 ## Technologies Used
 **
