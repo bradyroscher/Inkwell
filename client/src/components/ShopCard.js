@@ -9,7 +9,7 @@ const ShopCard = (props) => {
       onClick={() => history.push(`/shop-page/${props.id}`)}
       style={{
         display: 'flex',
-        width: '45vw',
+        width: '50vw',
         cursor: 'pointer',
         marginBottom: '30px'
       }}
@@ -32,7 +32,7 @@ const ShopCard = (props) => {
           justifyContent: 'center'
         }}
       >
-        <div style={{ fontSize: '40px' }}>{props.name}</div>
+        <div style={{ fontSize: '35px' }}>{props.name}</div>
         <div>{props.address}</div>
       </div>
     </div>
