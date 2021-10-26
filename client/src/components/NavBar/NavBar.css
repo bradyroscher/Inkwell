@@ -1,0 +1,56 @@
+.navbar {
+  background-color: #292929;
+  height: 55px;
+  border-bottom: 1px solid #7b7f6f;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.profile-nav {
+  text-decoration: none;
+  color: white;
+  font-family: 'Geostar', cursive;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  width: 10vw;
+  transition: ease-in-out 0.3s;
+}
+.profile-nav:hover {
+  color: #ff3131;
+}
+
+.INKWELL {
+  color: white;
+  transition: ease-in-out 0.3s;
+  font-size: 20px;
+}
+
+.INKWELL:hover {
+  color: #ff3131;
+}
+
+.log-out {
+  font-family: 'Geostar', cursive;
+  padding-right: 15px;
+  padding-left: 10px;
+  font-size: 15px;
+  width: 10vw;
+  transition: ease-in-out 0.3s;
+}
+
+.log-out:hover {
+  color: #ff3131;
+  font-family: 'Geostar', cursive;
+  cursor: pointer;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}

@@ -42,5 +42,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "babel-plugin-css-modules-transform": "^1.6.2",
+    "jest": "^26.6.0"
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink, useHistory } from 'react-router-dom'
-import { SetAuthenticated } from '../store/actions/AuthActions'
+import { SetAuthenticated } from '../../store/actions/AuthActions'
+import './NavBar.css'
 
 const mapStateToProps = ({ authState, userState }) => {
   return { authState, userState }
@@ -32,20 +33,26 @@ const NavBar = (props) => {
     >
       <div style={{ display: 'flex', width: '33%' }}>
         <div
-          style={{
-            display: userState.userData.userType === 'user' ? 'flex' : 'none',
-            alignItems: 'center'
-          }}
+          className={
+            userState.userData.userType === 'user' ? 'flex-center' : 'hide'
+          }
+          // style={{
+          //   display: userState.userData.userType === 'user' ? 'flex' : 'none',
+          //   alignItems: 'center'
+          // }}
         >
           <NavLink to={`/artist-register`} className="profile-nav">
             PROFILE
           </NavLink>
         </div>
         <div
-          style={{
-            display: userState.userData.userType === 'artist' ? 'flex' : 'none',
-            alignItems: 'center'
-          }}
+          className={
+            userState.userData.userType === 'user' ? 'flex-center' : 'hide'
+          }
+          // style={{
+          //   display: userState.userData.userType === 'artist' ? 'flex' : 'none',
+          //   alignItems: 'center'
+          // }}
         >
           <NavLink
             to={`/artist/${userState.userData.id}`}
