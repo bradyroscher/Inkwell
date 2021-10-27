@@ -36,10 +36,6 @@ const NavBar = (props) => {
           className={
             userState.userData.userType === 'user' ? 'flex-center' : 'hide'
           }
-          // style={{
-          //   display: userState.userData.userType === 'user' ? 'flex' : 'none',
-          //   alignItems: 'center'
-          // }}
         >
           <NavLink to={`/artist-register`} className="profile-nav">
             PROFILE
@@ -47,12 +43,8 @@ const NavBar = (props) => {
         </div>
         <div
           className={
-            userState.userData.userType === 'user' ? 'flex-center' : 'hide'
+            userState.userData.userType === 'artist' ? 'flex-center' : 'hide'
           }
-          // style={{
-          //   display: userState.userData.userType === 'artist' ? 'flex' : 'none',
-          //   alignItems: 'center'
-          // }}
         >
           <NavLink
             to={`/artist/${userState.userData.id}`}
